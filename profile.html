@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - LankaStay</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="stylego.css">
+</head>
+
+<body>
+  <div class="app">
+<div class="sys-utility-bar">
+  <div class="sys-alert"><i class="fa-regular fa-user"></i>profile</div>
+  <div class="sys-utility-controls">
+    <label class="sys-select">
+      <i class="fa-solid fa-globe"></i>
+      <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="si">සිං</option>
+        <option value="ta">த</option>
+      </select>
+    </label>
+        <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()">LKR</button>
+        <button class="sys-btn" onclick="toggleDarkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+    </div>
+
+    <main class="screen">
+      <section class="me">
+        <img class="avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="Profile">
+        <div>
+          <h2>Hello, Traveler!</h2>
+          <small>Explore Sri Lanka with LankaStay</small>
+        </div>
+      </section>
+
+      <a href="#" class="menu-item" onclick="alert('Viewing 1 Active Booking: BK-9982 at Sigiriya Village Hotel')"><span
+          class="box green"><i class="fa-solid fa-calendar-check"></i></span><span data-i18n="my_bookings">My
+          Bookings</span></a>
+      <a href="saved.html" class="menu-item"><span class="box purple"><i class="fa-solid fa-heart"></i></span><span
+          data-i18n="saved_places">Saved Places</span></a>
+      <a href="planner.html" class="menu-item"><span class="box orange"><i class="fa-solid fa-suitcase"></i></span><span
+          data-i18n="my_trips">My Trips &amp; Itineraries</span></a>
+      <a href="#" class="menu-item" onclick="toggleChat()"><span class="box blue"><i
+            class="fa-solid fa-circle-question"></i></span><span data-i18n="help_support">Help &amp; AI
+          Support</span></a>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
+      <a href="explore.html"><i class="fa-solid fa-compass"></i><span data-i18n="explore">Explore</span></a>
+      <a href="hotel.html"><i class="fa-solid fa-hotel"></i><span data-i18n="hotels">Hotels</span></a>
+      <a href="planner.html"><i class="fa-solid fa-route"></i><span data-i18n="planner">Planner</span></a>
+      <a href="profile.html" class="active"><i class="fa-regular fa-user"></i><span
+          data-i18n="profile">Profile</span></a>
+    </nav>
+  </div>
+  <script src="translations.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

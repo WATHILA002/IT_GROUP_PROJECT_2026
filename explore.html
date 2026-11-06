@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Sri Lanka</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="stylego.css">
+</head>
+
+<body>
+  <div class="app">
+<div class="sys-utility-bar">
+  <div class="sys-alert"><i class="fa-solid fa-compass"></i>Destinations Explorer</div>
+  <div class="sys-utility-controls">
+    <label class="sys-select">
+      <i class="fa-solid fa-globe"></i>
+      <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="si">සිං</option>
+        <option value="ta">த</option>
+      </select>
+    </label>
+        <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()">LKR</button>
+        <button class="sys-btn" onclick="toggleDarkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+    </div>
+
+    <main class="screen">
+      <header class="page-header">
+        <a href="index.html"><i class="fa-solid fa-arrow-left"></i></a>
+        <h2 data-i18n="explore">Explore Sri Lanka</h2>
+        <a href="#" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></a>
+      </header>
+
+      <!-- Category Filter Chips -->
+      <div class="chips" id="exploreFilterChips">
+        <button class="chip active" onclick="filterDestinations('all', this)">All</button>
+        <button class="chip" onclick="filterDestinations('beaches', this)">Beaches</button>
+        <button class="chip" onclick="filterDestinations('mountains', this)">Mountains</button>
+        <button class="chip" onclick="filterDestinations('cultural', this)">Cultural</button>
+        <button class="chip" onclick="filterDestinations('nature', this)">Nature</button>
+      </div>
+
+      <!-- Destinations List Container -->
+      <section class="list" id="exploreList"></section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
+      <a href="explore.html" class="active"><i class="fa-solid fa-compass"></i><span data-i18n="explore">Explore</span></a>
+      <a href="hotel.html"><i class="fa-solid fa-hotel"></i><span data-i18n="hotels">Hotels</span></a>
+      <a href="planner.html"><i class="fa-solid fa-route"></i><span data-i18n="planner">Planner</span></a>
+      <a href="profile.html"><i class="fa-regular fa-user"></i><span data-i18n="profile">Profile</span></a>
+    </nav>
+  </div>
+
+  <script src="translations.js"></script>
+  <script src="app.js"></script>
+  <script>
+    const destinationsData = [
+      { name: "Sigiriya", category: "cultural", rating: "4.8", desc: "Ancient rock fortress & royal history", img: ".//images/ssg.jpg", link: "places detail.html" },
+      { name: "Mirissa", category: "beaches", rating: "4.6", desc: "Whale watching & palm beaches", img: ".//images/miris.jpg", link: "#" },
+      { name: "Galle Fort", category: "cultural", rating: "4.5", desc: "Colonial charm & ocean views", img: ".//images/glft.webp", link: "#" },
+      { name: "Ella Nine Arch", category: "mountains", rating: "4.7", desc: "Hike, scenic train & tea hills", img: ".//images/ellao.avif", link: "#" },
+      { name: "Yala National Park", category: "nature", rating: "4.9", desc: "Leopard safaris & wilderness", img: ".//images/yalao.jpg", link: "#" }
+    ];
+
+    let currentExploreCategory = 'all';
+
+    function filterDestinations(category, btnElement) {
+      currentExploreCategory = category;
+
+      // Update active pill button styling
+      document.querySelectorAll('#exploreFilterChips .chip').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+
+      renderDestinations();
+    }
+
+    function renderDestinations() {
+      const container = document.getElementById('exploreList');
+      container.innerHTML = '';
+
+      const filtered = currentExploreCategory === 'all'
+        ? destinationsData
+        : destinationsData.filter(d => d.category === currentExploreCategory);
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<p class="empty">No destinations found for this category.</p>';
+        return;
+      }
+
+      filtered.forEach(d => {
+        const card = document.createElement('article');
+        card.className = 'dest-card';
+        if (d.link !== '#') {
+          card.onclick = () => location.href = d.link;
+        }
+        card.innerHTML = `
+          <img src="${d.img}" alt="${d.name}">
+          <a href="#" class="heart" onclick="event.stopPropagation(); this.classList.toggle('saved');"><i class="fa-regular fa-heart"></i></a>
+          <span class="rating"><i class="fa-solid fa-star"></i> ${d.rating}</span>
+          <div class="info">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <h3>${d.name}</h3>
+              <p>${d.desc}</p>
+            </div>
+          </div>
+          <a href="${d.link}" class="arrow" onclick="event.stopPropagation();"><i class="fa-solid fa-arrow-right"></i></a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDestinations();
+    });
+  </script>
+</body>
+
+</html>

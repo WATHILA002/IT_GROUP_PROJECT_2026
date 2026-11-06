@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sigiriya - Travel Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="stylego.css">
+</head>
+
+<body>
+  <div class="app">
+<div class="sys-utility-bar">
+  <div class="sys-alert"><i class="fa-solid fa-moon"></i>Places</div>
+  <div class="sys-utility-controls">
+    <label class="sys-select">
+      <i class="fa-solid fa-globe"></i>
+      <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="si">සිං</option>
+        <option value="ta">த</option>
+      </select>
+    </label>
+        <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()">LKR</button>
+        <button class="sys-btn" onclick="toggleDarkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+    </div>
+
+    <main class="screen">
+      <header class="loc-hero" style="background-image:url('.//images/ssg.jpg');">
+        <div class="loc-hero-overlay">
+          <nav class="loc-top-nav">
+            <button class="loc-icon-btn" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="loc-icon-btn"><i class="fa-regular fa-heart"></i></button>
+          </nav>
+          <div class="loc-hero-content">
+            <div class="loc-rating-badge"><i class="fa-solid fa-star"></i> 4.8 (2.5k reviews)</div>
+            <h1 class="loc-title-text">Sigiriya</h1>
+            <p class="loc-subtitle-text">Ancient rock fortress &amp; royal history</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="loc-container">
+        <div class="loc-stats-bar">
+          <div class="loc-stat-item"><i class="fa-regular fa-clock"></i><span>Best Time</span><strong>1 Day</strong>
+          </div>
+          <div class="loc-stat-item"><i class="fa-solid fa-ticket"></i><span>Entry Fee</span><strong data-lkr="3000">LKR
+              3,000</strong></div>
+          <div class="loc-stat-item"><i class="fa-solid fa-location-dot"></i><span>From City</span><strong>8 km</strong>
+          </div>
+        </div>
+
+        <section class="loc-section">
+          <h2 class="loc-section-title">About</h2>
+          <p style="font-size:13px; line-height:1.5;">Sigiriya is an ancient rock fortress and UNESCO World Heritage
+            Site with breathtaking views, rich history, and ancient water gardens.</p>
+        </section>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
+      <a href="explore.html"><i class="fa-solid fa-compass"></i><span data-i18n="explore">Explore</span></a>
+      <a href="hotel.html"><i class="fa-solid fa-hotel"></i><span data-i18n="hotels">Hotels</span></a>
+      <a href="planner.html"><i class="fa-solid fa-route"></i><span data-i18n="planner">Planner</span></a>
+      <a href="profile.html"><i class="fa-regular fa-user"></i><span data-i18n="profile">Profile</span></a>
+    </nav>
+  </div>
+  <script src="translations.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LankaStay - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="stylego.css">
+</head>
+
+<body>
+  <div class="app" id="appFrame">
+    <div class="sys-utility-bar">
+      <div class="sys-alert"><i class="fa-solid fa-moon"></i> <span data-i18n="poya_alert"><b>Poya Holiday Alert: Nov 15</b></span></div>
+      <div class="sys-utility-controls">
+        <label class="sys-select">
+          <i class="fa-solid fa-globe"></i>
+          <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="si">සිං</option>
+            <option value="ta">த</option>
+          </select>
+        </label>
+        <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()" aria-label="Currency">LKR</button>
+        <button class="sys-btn sys-theme-btn" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-sun"></i><i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </div>
+
+
+    <main class="screen">
+      <section class="hero">
+        <div class="top-bar">
+          <i class="fa-solid fa-umbrella-beach logo-icon"></i>
+          <div class="brand">
+            <h1>Lanka <span>Stay</span></h1>
+            <small>Season-Aware Hotel &amp; Trip Planner</small>
+          </div>
+          <a href="profile.html" class="icon-btn"><i class="fa-regular fa-bell"></i></a>
+          <a href="profile.html" class="icon-btn"><i class="fa-solid fa-user"></i></a>
+        </div>
+
+        <p class="kicker">SRI LANKA</p>
+        <h2 data-i18n="hero_title">Explore Sri Lanka with <span>Lanka Stay</span></h2>
+        <p data-i18n="hero_sub">Your island journey, all in one place.</p>
+
+        <form class="search-pill" action="explore.html">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" name="q" placeholder="Where do you want to go?" data-i18n="search_placeholder">
+          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </section>
+
+      <section class="content">
+        <div class="categories">
+          <a href="hotel.html"><span class="box green"><i class="fa-solid fa-bed"></i></span><span data-i18n="hotels">Hotels</span></a>
+          <a href="https://pickme.lk/services/ride/"><span class="box blue"><i class="fa-solid fa-bus"></i></span></span><span data-i18n="transport">Transport</span></a>
+          <a href="explore.html"><span class="box orange"><i class="fa-solid fa-utensils"></i></span></span><span data-i18n="foods">Foods</span></a>
+          <a href="explore.html"><span class="box purple"><i class="fa-solid fa-camera"></i></span></span><span data-i18n="attraction">Attraction</span></a>
+          <a href="planner.html"><span class="box leaf"><i class="fa-solid fa-route"></i></span><span data-i18n="planner">Planner</span></a>
+        </div>
+        <br>
+
+
+        <div class="button-container">
+          <button class="plan-btn" onclick="location.href='planner.html'">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span data-i18n="plan_trip_btn">Plan Your Trip (Trip Fit Score)</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <br>
+
+        <div class="section-title">
+          <h3 data-i18n="featured_hotels">Featured Season-Aware Hotels</h3>
+          <a href="hotel.html" data-i18n="view_all">View all →</a>
+        </div>
+
+        <div class="popular" style="display:flex; gap:12px; overflow-x:auto;">
+          <a href="hotel.html" class="mini-card"
+            style="flex:0 0 200px; height:140px; border-radius:14px; position:relative; overflow:hidden;">
+            <img src="./images/water-garden-sigiriya.jpg" alt="Water Garden"
+              style="width:100%; height:100%; object-fit:cover;">
+            <div class="caption"
+              style="position:absolute; bottom:0; padding:8px; background:linear-gradient(transparent, rgba(0,0,0,0.8)); color:white; width:100%;">
+              <b>Water Garden</b>
+              <small>Sigiriya • <span data-lkr="28000">LKR 28,000</span></small>
+            </div>
+          </a>
+          <a href="hotel.html" class="mini-card"
+            style="flex:0 0 200px; height:140px; border-radius:14px; position:relative; overflow:hidden;">
+            <img src=".//images/avanib.webp" alt="Avani" style="width:100%; height:100%; object-fit:cover;">
+            <div class="caption"
+              style="position:absolute; bottom:0; padding:8px; background:linear-gradient(transparent, rgba(0,0,0,0.8)); color:white; width:100%;">
+              <b>Avani Bentota</b>
+              <small>Bentota • <span data-lkr="22000">LKR 22,000</span></small>
+            </div>
+          </a>
+          <a href="hotel.html" class="mini-card"
+            style="flex:0 0 200px; height:140px; border-radius:14px; position:relative; overflow:hidden;">
+            <img src="./images/wallawwa-kotugoda.jpg" alt="Water Garden"
+              style="width:100%; height:100%; object-fit:cover;">
+            <div class="caption"
+              style="position:absolute; bottom:0; padding:8px; background:linear-gradient(transparent, rgba(0,0,0,0.8)); color:white; width:100%;">
+              <b>Wallawwa Hotel</b>
+              <small>Kotugoda • <span data-lkr="28000">LKR 28,000</span></small>
+            </div>
+          </a>
+          <a href="hotel.html" class="mini-card"
+            style="flex:0 0 200px; height:140px; border-radius:14px; position:relative; overflow:hidden;">
+            <img src="./images/ugabaypasikuda.webp" alt="Uga bay" style="width:100%; height:100%; object-fit:cover;">
+            <div class="caption"
+              style="position:absolute; bottom:0; padding:8px; background:linear-gradient(transparent, rgba(0,0,0,0.8)); color:white; width:100%;">
+              <b>Uga bay hotel</b>
+              <small>Pasikuda • <span data-lkr="28000">LKR 28,000</span></small>
+            </div>
+          </a>
+        </div>
+        <br>
+        <br>
+
+        <div class="weather-section">
+          <div class="weather-widget">
+            <div class="weather-icon">
+              <i class="fa-solid fa-cloud-sun"></i>
+            </div>
+            <div class="weather-info">
+              <h3 data-i18n="weather_title">Live Sri Lanka Weather</h3>
+              <p id="current-temp">29°C</p>
+              <span id="weather-desc">South-West Season Active</span>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <section class="ai-fullwidth-banner">
+          <div class="ai-banner-content">
+            <h1 class="ai-title">Trip Fit &amp; Monsoon Engine</h1>
+            <div class="ai-chip-icon">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <p class="ai-subtitle">
+              Calculates dynamic 0-100 compatibility scores, real road driving hours (OSRM matrix), and seasonal
+              down-ranking.
+            </p>
+            <button class="ai-action-btn" onclick="location.href='planner.html'">
+              <i class="fa-solid fa-robot"></i> Calculate Trip Fit
+            </button>
+          </div>
+        </section>
+      </section>
+
+      <section class="gallery-section">
+        <div class="header-text">
+          <h2>OUR GALLERY</h2>
+        </div>
+        <br>
+
+        <!-- Navigation Arrow Left -->
+        <button class="nav-arrow left" id="prevBtn">&lt;</button>
+
+        <!-- 3D Carousel Track -->
+        <div class="carousel-track">
+          <div class="card" data-index="0" data-name="" data-role="">
+            <img src=".//images/bg1.jpeg"
+              alt="Member 1">
+          </div>
+          <div class="card" data-index="1" data-name="" data-role="">
+            <img src=".//images/bg2.jpeg"
+              alt="Member 2">
+          </div>
+          <div class="card" data-index="2" data-name="" data-role="">
+            <img src=".//images/bg3.jpeg"
+              alt="Member 3">
+          </div>
+          <div class="card" data-index="2" data-name="" data-role="">
+            <img src=".//images/bg4.jpeg"
+              alt="Member 3">
+          </div>
+          <div class="card" data-index="2" data-name="" data-role="">
+            <img src=".//images/bg5.jpeg"
+              alt="Member 3">
+          </div>
+          <div class="card" data-index="3" data-name="" data-role="">
+            <img src=".//images/bg6.jpeg"
+              alt="Member 4">
+          </div>
+          <div class="card" data-index="4" data-name="" data-role="">
+            <img src=".//images/bg7.jpeg"
+              alt="Member 5">
+          </div>
+          <div class="card" data-index="2" data-name="" data-role="">
+            <img src=".//images/bg8.jpeg"
+              alt="Member 3">
+          </div>
+          <div class="card" data-index="2" data-name="" data-role="">
+            <img src=".//images/bg9.jpeg"
+              alt="Member 3">
+          </div>
+          <div class="card" data-index="5" data-name="" data-role="">
+            <img src=".//images/bg10.jpeg"
+              alt="Member 6">
+          </div>
+        </div>
+
+        <!-- Navigation Arrow Right -->
+        <button class="nav-arrow right" id="nextBtn">&gt;</button>
+
+        <!-- Dynamic Member Info -->
+        <div class="member-info">
+          <h2 class="member-name" id="memberName">Emily Kim</h2>
+          <p class="member-role" id="memberRole">FOUNDER</p>
+        </div>
+
+        <!-- Indicator Dots -->
+        <div class="dots" id="dotsContainer"></div>
+      </section>
+
+      <section class="dest-header-section">
+        <!-- Top Intro Box -->
+        <div class="dest-intro-box">
+        <h2 class="dest-main-title">
+        <span data-i18n="discover_the_beauty_of" style="color: #000000;">Discover The Beauty Of</span><br>
+        <span data-i18n="sri_lanka" style="color: #D4AF37;">Sri Lanka</span>
+        </h2>
+          <p class="dest-main-desc"><span data-i18n="discover_paragraph">
+            Explore a land of breathtaking landscapes, golden beaches, ancient wonders, and unforgettable adventures.
+            From misty mountains to topical coastlines, every destination tells a beautiful story.
+          </span></p>
+        </div>
+
+        <!-- Featured Destination Card -->
+        <article class="dest-detail-card">
+          <h1 class="dest-name"><span data-i18n="journey_he">Journey Throught Paradise></span></h1>
+          <p class="dest-bio"><span data-i18n="journey_para">
+            Discover Sri Lanaka's most beautiful destinations, from peaceful beaches and green mountains to historical
+            cities and hidden natural wonders. Every journey brings a new experince.....
+          </span></p>
+
+          <!-- Meta Information Badges -->
+          <div class="dest-meta-list">
+            <div class="dest-meta-item">
+              <div class="meta-icon-btn">
+                <i class="fas fa-hotel"></i>
+              </div>
+              <div class="meta-text">
+                <span><span data-i18n="dest1">Comfortable Hotels</span></span>
+              </div>
+            </div>
+
+          <div class="dest-meta-list">
+            <div class="dest-meta-item">
+              <div class="meta-icon-btn">
+                <i class="fas fa-route"></i>
+              </div>
+              <div class="meta-text">
+                <span><span data-i18n="dest2">Your Perfect Journey</span></span>
+              </div>
+            </div>
+
+          <div class="dest-meta-list">
+            <div class="dest-meta-item">
+              <div class="meta-icon-btn">
+                <i class="fas fa-car"></i>
+              </div>
+              <div class="meta-text">
+                <span><span data-i18n="dest3">Transportation</span></span>
+              </div>
+            </div>
+
+          <div class="dest-meta-list">
+            <div class="dest-meta-item">
+              <div class="meta-icon-btn">
+                <i class="fas fa-mountain"></i>
+              </div>
+              <div class="meta-text">
+                <span><span data-i18n="dest4">Nature & Wildlife</span></span>
+              </div>
+            </div>
+
+          <div class="dest-meta-list">
+            <div class="dest-meta-item">
+              <div class="meta-icon-btn">
+                <i class="fas fa-landmark"></i>
+              </div>
+              <div class="meta-text">
+                <span><span data-i18n="dest5">Historical Places</span></span>
+              </div>
+            </div>
+
+            <div class="dest-meta-item">
+              <div class="meta-icon-btn">
+                <i class="fas fa-utensils"></i>
+              </div>
+              <div class="meta-text">
+                <span><span data-i18n="dest6">Sri Lanka Foods</span></span>
+              </div>
+            </div>
+          </div>
+          <br>
+          <button class="ai-action-btn" onclick="location.href='explore.html'">
+            <i class="fa-solid fa-location-dot"></i><span data-i18n="dest_btn">Explore Destination</span>
+          </button>
+        </article>
+      </section>
+
+      <section class="elephant-section">
+        <article class="elephant-card">
+          <!-- Left Side Picture -->
+          <div class="elephant-img-wrapper">
+            <img src=".//images/elephanthome.jpeg" alt="Save Sri Lankan Elephants">
+          </div>
+
+          <!-- Right Side Content -->
+          <div class="elephant-content">
+            <div class="elephant-tag"><span data-i18n="ele_t">Wildlife Conservation</span></div>
+            <h2 class="elephant-title"><span data-i18n="ele_t2">Save Sri Lanka's Gentle Giants</span></h2>
+
+            <p class="elephant-desc"><span data-i18n="ele_t3">
+              Sri Lanka is home to the Asian elephant subspecies (<i>Elephas maximus maximus</i>). Human-elephant
+              conflict and habitat loss severely threaten their survival. Join conservation efforts, support ethical
+              elephant sanctuaries, and protect their natural migratory corridors.
+            </span></p>
+
+            <!-- Meta Features & CTA Button -->
+            <div class="elephant-footer">
+              <div class="elephant-stat">
+                <i class="fa-solid fa-tree"></i>
+                <span><span data-i18n="ele_t4"><b>Udawalawe &amp; Minneriya</b> Protection Zones</span></span>
+              </div>
+              <button class="elephant-action-btn"
+                onclick="alert('Thank you for supporting Sri Lankan Elephant Conservation!')">
+                <span><span data-i18n="ele_btn">Support Now</span></span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+
+      <!-- Features & Accuracy Section -->
+      <section class="features-section">
+        <div class="features-container">
+
+          <!-- Card 1: Customer First -->
+          <article class="feature-card">
+            <div class="feature-icon-box">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3 class="feature-title"><span data-i18n="ban1">Customer First</span></h3>
+            <p class="feature-desc"><span data-i18n="band1">
+              Our travelers are at the heart of everything we do. Every journey is designed around your comfort,
+              satisfaction, and happiness.
+            </span></p>
+          </article>
+
+          <!-- Card 2: Authenticity -->
+          <article class="feature-card">
+            <div class="feature-icon-box">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3 class="feature-title"><span data-i18n="ban2">Authenticity</span></h3>
+            <p class="feature-desc"><span data-i18n="band2">
+              We share the real essence of Sri Lanka — its people, culture, and landscapes — offering experiences that
+              are genuine and meaningful.
+            </span></p>
+          </article>
+
+          <!-- Card 3: Reliability & Accuracy -->
+          <article class="feature-card">
+            <div class="feature-icon-box">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="feature-title"><span data-i18n="ban3">Reliability</span></h3>
+            <p class="feature-desc"><span data-i18n="band3">
+              We provide precise travel insights, real-time monsoon advisories, and accurate hotel rates to ensure a
+              seamless trip experience.
+            </span></p>
+          </article>
+
+        </div>
+      </section>
+
+
+      <section class="video-section">
+        <div class="video-text">
+          <h3 class="video-title"><span data-i18n="vidt">Discover Sri Lanka</span></h3>
+          <p class="video-desc"><span data-i18n="vidb">
+            Sri Lanka is a tropical island with golden beaches, misty tea hills,
+            ancient temples and wild safaris, all within a few hours of each other.
+          </span></p>
+        </div>
+        <div class="video-card">
+          <video autoplay muted loop playsinline preload="auto" poster=".//images/mainvideo.mp4">
+            <source src=".//images/mainvideo.mp4" type="video/mp4">
+          </video>
+        </div>
+      </section>
+      <br>
+      <br>
+
+      <!-- Mobile App Comprehensive Footer -->
+       <footer class="app-footer">
+
+        <div class="fotter-brand-section">
+          <div class="footer-logo">
+            <i class="fa-solid fa-umbrella-beach logo-icon-gold"></i>
+            <div class="logo-text">
+              <h2>LANAKA STAY</h2>
+              <small>YOUR JOURNEY, OUR CARE</small>
+            </div>
+          </div>
+          <p class="footer-about-text">
+            <strong>LANKA Stay</strong><span data-i18n="fd1"> - operated by LankaGo (Pvt) Ltd and incorporated under companies Act No. 7 0f 2026 (company Registration no. PV00345889) - is your trusted Sri Lanka travel partner, dedicated to craftingtailor-made journeys, authenticexperiences, culturalimmersion, and exceptional comfort.
+          </span></p>
+
+          <p class="footer-about-text"><span data-i18n="fd2">
+            We bring your travel dreams to life through expertly curated itineraries, genuine local insights, and personalized service every step of the way - <em>Because your journey our care.</em>
+          </span></p>
+
+          <div class="footer-social-icons">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+
+          <div class="footer-partner-badge">
+            <span class="badge-tag">PARTNERED ON SOCIAL MEDIA</span>
+            <div class="partner-box-content">
+              <div class="partner-logo-title">Pick Me</div>
+              <div class="partner-sub">official Travel Media Partner</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-block">
+          <h3 class="footer-heading"><span data-i18n="lh">QUICK LINKS</span></h3>
+          <ul class="footer-nav-list">
+            <li><a href="index.html"><span data-i18n="l1">Home</span></a></li>
+            <li><a href="index.html"><span data-i18n="l2">Travel Testimonials</span></a></li>
+            <li><a href="index.html"><span data-i18n="l3">Tour Package</span></a></li>
+            <li><a href="index.html"><span data-i18n="l4">Day Tours</span></a></li>
+            <li><a href="index.html"><span data-i18n="l5">Destinations</span></a></li>
+            <li><a href="index.html"><span data-i18n="l6">Tailor Made Tours</span></a></li>
+            <li><a href="index.html"><span data-i18n="l7">MICE &amp; Corporate Travel</span></a></li>
+            <li><a href="index.html"><span data-i18n="l8">Blog</span></a></li>
+            <li><a href="index.html"><span data-i18n="l9">Careers</span></a></li>
+            <li><a href="index.html"><span data-i18n="l10">Our Partners</span></a></li>
+            <li><a href="index.html"><span data-i18n="l11">pay-fee-PVT-Ltd</span></a></li>
+            <li><a href="index.html"><span data-i18n="l12">Faq</span></a></li>
+            <li><a href="index.html"><span data-i18n="l13">About Us</span></a></li>
+            <li><a href="index.html"><span data-i18n="l14">Contackt Us</span></a></li>
+            <li><a href="index.html"><span data-i18n="l15">Rate Us</span></a></li>
+          </ul>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-block">
+          <h3 class="footer-heading"><span data-i18n="destinations">DESTINATIONS</span></h3>
+          <ul class="footer-nav-list">
+            <li><a href="#"><span data-i18n="sigiriya">Sigiriya</span></a></li>
+            <li><a href="#"><span data-i18n="kandy">Kandy</span></a></li>
+            <li><a href="#"><span data-i18n="ella">Ella</span></a></li>
+            <li><a href="#"><span data-i18n="nuwara_eliya">Nuwara Eliya</span></a></li>
+            <li><a href="#"><span data-i18n="mirissa">Mirissa</span></a></li>
+            <li><a href="#"><span data-i18n="galle">Galle</span></a></li>
+            <li><a href="#"><span data-i18n="yala_national_park">Yala National Park</span></a></li>
+            <li><a href="#"><span data-i18n="colombo">Colombo</span></a></li>
+            <li><a href="#"><span data-i18n="arugam_bay">Arugam Bay</span></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-block">
+          <h3 class="footer-heading">BROWSE SRI LANKA TOURS</h3>
+          <div class="footer-tags-wrapper">
+            <a href="#" class="tour-chip">Wildlife Safaris</a>
+            <a href="#" class="tour-chip">Honeymoon Pakages</a>
+            <a href="#" class="tour-chip">Luxury Packages</a>
+            <a href="#" class="tour-chip">Family Trips</a>
+            <a href="#" class="tour-chip">Ayurveda &amp; Wellness</a>
+            <a href="#" class="tour-chip">Cultural Tours</a>
+            <a href="#" class="tour-chip">Heritage &amp; History</a>
+            <a href="#" class="tour-chip">Beach holidays</a>
+            <a href="#" class="tour-chip">Adventure Tours</a>
+            <a href="#" class="tour-chip">Nature &amp; Hills</a>
+            <a href="#" class="tour-chip">Private Transfers</a>
+            <a href="#" class="tour-chip">Scenic Train Journeys</a>
+            <a href="#" class="tour-chip">7 Days in Sri Lanka</a>
+            <a href="#" class="tour-chip">10 Days in Sri Lanka</a>
+            <a href="#" class="tour-chip">12 Days in Sri Lanka</a>
+            <a href="#" class="tour-chip">14 Days in Sri Lanka</a>
+          </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-block">
+          <h3 class="footer-heading">OUR OFFICE</h3>
+          <ul class="footer-contact-list">
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>Hotline: +94 85 345 3454</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone-volume"></i>
+              <span>Genaral: +94 11 478 6784</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-whatsapp"></i>
+              <span>Chat On WhatsApp</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>info@lankastay.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Lanka Stay (Pvt) Ltd, No. 105/A1, Western Province, Colombo3, Sri Lanka</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter-card">
+          <h3 class="newsletter-sub">Subsscribe to recive travel tips and exclusive offers.</h3>
+          <from class="newsletter-form" onsubmit="event.preventDefault(); alert('Subsscribe successfully!');">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <button type="submit">Subscribe Now</button>
+          </from>
+        </div>
+
+        <div class="footer-legal">
+          <p>&copy; 2026 <strong>Lanka Stay (Pvt) Ltd</strong>. All rights reserved.</p>
+          <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a> &bull;
+            <a href="#">Terms and Conditions</a> &bull;
+            <a href="#">Cookie Policy</a> &bull;
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+
+       </footer>
+    </main>
+
+
+    <div class="chat-fab" onclick="toggleChat()"><i class="fa-solid fa-comments"></i></div>
+    <div class="chat-modal" id="chatModal">
+      <div class="chat-window">
+        <div class="chat-header">
+          <span><i class="fa-solid fa-robot"></i> LankaStay Assistant</span>
+          <i class="fa-solid fa-xmark" onclick="toggleChat()" style="cursor:pointer;"></i>
+        </div>
+        <div class="chat-messages" id="chatMsgs">
+          <div class="msg-bot">Ayubowan! I am your LankaStay AI. Ask me about weather, driving times, or Sri Lanka hotel
+            stays!</div>
+        </div>
+        <div class="chat-input-bar">
+          <input type="text" id="chatInput" placeholder="Type a message...">
+          <button onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="index.html" class="active"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
+      <a href="explore.html"><i class="fa-solid fa-compass"></i><span data-i18n="explore">Explore</span></a>
+      <a href="hotel.html"><i class="fa-solid fa-hotel"></i><span data-i18n="hotels">Hotels</span></a>
+      <a href="planner.html"><i class="fa-solid fa-route"></i><span data-i18n="planner">Planner</span></a>
+      <a href="profile.html"><i class="fa-regular fa-user"></i><span data-i18n="profile">Profile</span></a>
+    </nav>
+  </div>
+  <script src="translations.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
