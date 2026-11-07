@@ -68,15 +68,19 @@
 
               <label class="plan-lbl" for="phone">Mobile Number <b class="plan-req">*</b></label>
               <div class="plan-phone-row">
-                <select class="plan-field plan-cc" id="cc" aria-label="Country code"> 
-                  <option value="+94">🇱🇰 +94</option>
-                  <option value="+91">🇮🇳 +91</option>
-                  <option value="+44">🇬🇧 +44</option>
-                  <option value="+1">🇺🇸 +1</option>
-                  <option value="+61">🇦🇺 +61</option>
-                  <option value="+49">🇩🇪 +49</option>
-                </select>
-                <input class="plan-field" id="phone" type="tel" placeholder="77 123 4567" autocomplete="tel-national">
+              <select id="userCountry" class="plan-field plan-cc" aria-label="Country Code">
+               <option value="+94" data-short="🇱🇰 +94" selected>🇱🇰 +94 - Sri Lanka</option>
+               <option value="+1" data-short="🇺🇸 +1">🇺🇸 +1 - USA / Canada</option>
+               <option value="+44" data-short="🇬🇧 +44">🇬🇧 +44 - United Kingdom</option>
+               <option value="+61" data-short="🇦🇺 +61">🇦🇺 +61 - Australia</option>
+               <option value="+91" data-short="🇮🇳 +91">🇮🇳 +91 - India</option>
+               <option value="+49" data-short="🇩🇪 +49">🇩🇪 +49 - Germany</option>
+               <option value="+33" data-short="🇫🇷 +33">🇫🇷 +33 - France</option>
+               <option value="+81" data-short="🇯🇵 +81">🇯🇵 +81 - Japan</option>
+               <option value="+971" data-short="🇦🇪 +971">🇦🇪 +971 - United Arab Emirates</option>
+               <option value="+65" data-short="🇸🇬 +65">🇸🇬 +65 - Singapore</option>
+              </select>
+               <input type="tel" id="userPhone" class="plan-field" placeholder="77 123 4567">
               </div>
               <p class="plan-err" id="err-phone"></p>
             </div>
@@ -752,6 +756,17 @@
 
   goTo(1);
 })();
+
+  const countrySelect = document.getElementById('userCountry');
+  
+  function updateCountryDisplay() {
+    const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+    const shortText = selectedOption.getAttribute('data-short');
+    // Temporarily swap text to the short version when closed/selected
+    // (Note: To keep it clean across all browsers, we adjust the width/display style)
+  }
+  
+  countrySelect.addEventListener('change', updateCountryDisplay);
   </script>
 </body>
 
