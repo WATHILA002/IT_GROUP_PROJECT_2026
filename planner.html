@@ -66,21 +66,21 @@
               <input class="plan-field" id="email" type="email" placeholder="e.g. john@example.com" autocomplete="email">
               <p class="plan-err" id="err-email"></p>
 
-              <label class="plan-lbl" for="phone">Mobile Number <b class="plan-req">*</b></label>
+              <label class="plan-lbl">Phone / WhatsApp <span class="plan-req">*</span></label>
               <div class="plan-phone-row">
-              <select id="userCountry" class="plan-field plan-cc" aria-label="Country Code">
-               <option value="+94" data-short="🇱🇰 +94" selected>🇱🇰 +94 - Sri Lanka</option>
-               <option value="+1" data-short="🇺🇸 +1">🇺🇸 +1 - USA / Canada</option>
-               <option value="+44" data-short="🇬🇧 +44">🇬🇧 +44 - United Kingdom</option>
-               <option value="+61" data-short="🇦🇺 +61">🇦🇺 +61 - Australia</option>
-               <option value="+91" data-short="🇮🇳 +91">🇮🇳 +91 - India</option>
-               <option value="+49" data-short="🇩🇪 +49">🇩🇪 +49 - Germany</option>
-               <option value="+33" data-short="🇫🇷 +33">🇫🇷 +33 - France</option>
-               <option value="+81" data-short="🇯🇵 +81">🇯🇵 +81 - Japan</option>
-               <option value="+971" data-short="🇦🇪 +971">🇦🇪 +971 - United Arab Emirates</option>
-               <option value="+65" data-short="🇸🇬 +65">🇸🇬 +65 - Singapore</option>
-              </select>
-               <input type="tel" id="userPhone" class="plan-field" placeholder="77 123 4567">
+                <select id="userCountry" class="plan-field plan-cc" aria-label="Country Code">
+                  <option value="+94" data-short="🇱🇰 +94" selected>🇱🇰 +94 - Sri Lanka</option>
+                  <option value="+1" data-short="🇺🇸 +1">🇺🇸 +1 - USA / Canada</option>
+                  <option value="+44" data-short="🇬🇧 +44">🇬🇧 +44 - United Kingdom</option>
+                  <option value="+61" data-short="🇦🇺 +61">🇦🇺 +61 - Australia</option>
+                  <option value="+91" data-short="🇮🇳 +91">🇮🇳 +91 - India</option>
+                  <option value="+49" data-short="🇩🇪 +49">🇩🇪 +49 - Germany</option>
+                  <option value="+33" data-short="🇫🇷 +33">🇫🇷 +33 - France</option>
+                  <option value="+81" data-short="🇯🇵 +81">🇯🇵 +81 - Japan</option>
+                  <option value="+971" data-short="🇦🇪 +971">🇦🇪 +971 - United Arab Emirates</option>
+                  <option value="+65" data-short="🇸🇬 +65">🇸🇬 +65 - Singapore</option>
+                </select>
+                <input type="tel" id="userPhone" class="plan-field" placeholder="77 123 4567">
               </div>
               <p class="plan-err" id="err-phone"></p>
             </div>
@@ -90,7 +90,6 @@
             </div>
           </div>
         </section>
-        <br>
         <br>
         <br>
 
@@ -113,7 +112,6 @@
           <br>
           <br>
         </section>
-     
 
         <!-- STEP 3: Travel Dates -->
         <section class="plan-step" data-step="3">
@@ -159,7 +157,6 @@
           <br>
           <br>
         </section>
-    
 
         <!-- STEP 4: Budget -->
         <section class="plan-step" data-step="4">
@@ -199,7 +196,6 @@
           <br>
           <br>
         </section>
-
 
         <!-- STEP 5: Preferences -->
         <section class="plan-step" data-step="5">
@@ -341,7 +337,7 @@
     { name: 'Galle' },
     { name: 'Kandy' },
     { name: 'Yala' },
-    { name: 'other' }
+    { name: 'others'}
   ];
 
   var state = {
@@ -371,7 +367,7 @@
   function showErr(id, msg, fieldId) {
     var el = $('#' + id);
     if (el) el.textContent = msg || '';
-    if (fieldId) $('#' + fieldId).classList.toggle('bad', !!msg);
+    if (fieldId && $('#' + fieldId)) $('#' + fieldId).classList.toggle('bad', !!msg);
   }
 
   function validate(n) {
@@ -379,13 +375,17 @@
     if (n === 1) {
       state.name = $('#fullName').value.trim();
       state.email = $('#email').value.trim();
-      state.phone = $('#phone').value.trim();
+      state.phone = $('#userPhone') ? $('#userPhone').value.trim() : '';
+      
       showErr('err-type', state.type ? '' : 'Please choose what you are planning.');
       showErr('err-name', state.name.length < 2 ? 'Please enter your full name.' : '', 'fullName');
+      
       var mailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email);
       showErr('err-email', mailOk ? '' : 'Please enter a valid email.', 'email');
+      
       var digits = state.phone.replace(/\D/g, '');
-      showErr('err-phone', digits.length < 7 ? 'Please enter a valid mobile number.' : '', 'phone');
+      showErr('err-phone', digits.length < 7 ? 'Please enter a valid mobile number.' : '', 'userPhone');
+      
       ok = !!state.type && state.name.length >= 2 && mailOk && digits.length >= 7;
     }
     if (n === 2) {
@@ -560,13 +560,15 @@
   }
 
   function buildPayload() {
+    var ccEl = $('#userCountry');
+    var ccVal = ccEl ? ccEl.value : '';
     return {
       plan_type: state.type,
       trip_style: state.style,
       traveller_type: state.who,
       full_name: state.name,
       email: state.email,
-      phone: $('#cc').value + ' ' + state.phone,
+      phone: ccVal + ' ' + state.phone,
       destinations: state.dests,
       arrival: iso(state.start),
       departure: iso(state.end),
@@ -757,16 +759,17 @@
   goTo(1);
 })();
 
-  const countrySelect = document.getElementById('userCountry');
-  
-  function updateCountryDisplay() {
-    const selectedOption = countrySelect.options[countrySelect.selectedIndex];
-    const shortText = selectedOption.getAttribute('data-short');
-    // Temporarily swap text to the short version when closed/selected
-    // (Note: To keep it clean across all browsers, we adjust the width/display style)
-  }
-  
+const countrySelect = document.getElementById('userCountry');
+
+function updateCountryDisplay() {
+  if (!countrySelect) return;
+  const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+  const shortText = selectedOption.getAttribute('data-short');
+}
+
+if (countrySelect) {
   countrySelect.addEventListener('change', updateCountryDisplay);
+}
   </script>
 </body>
 
