@@ -1091,6 +1091,7 @@ button {
   border-radius: 8px;
   font-size: 0.9rem;
   outline: none;
+  background: #fff;
 }
 
 .loc-primary-btn {
@@ -2391,8 +2392,15 @@ textarea.plan-field {
   gap: 8px; 
 }
 .plan-phone-row .plan-cc { 
-  width: 112px; 
-  flex: none; 
+  width: 96px; 
+  flex: none;
+  padding: 12px 8px;
+  text-align: centere;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Plan type tiles */
@@ -2752,6 +2760,21 @@ input[type=range] {
 .plan-cc,
 .plan-cc option {
   font-family: inherit, "segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 14px;
+  padding: 10px;
+  background: #ffffff;
+  color: var(--plan-ink);
+}
+
+.dark-mood .plan-cc {
+  background-color: #13261e;
+  color: #f1f5f3;
+  border-color: #1f3d30;
+}
+
+.dark-mood .plan-cc {
+  background-color: #13261e;
+  color: #f1f5f3;
 }
 
 .plan-summary b { 
