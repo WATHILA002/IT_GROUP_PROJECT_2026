@@ -7,21 +7,22 @@
   <title>Hotels - LankaStay</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="stylego.css">
+  <link rel="stylesheet" href="hotelnewcss.css">
 </head>
 
 <body>
   <div class="app">
-<div class="sys-utility-bar">
-  <div class="sys-alert"><i class="fa-solid fa-hotel"></i>Hotels</div>
-  <div class="sys-utility-controls">
-    <label class="sys-select">
-      <i class="fa-solid fa-globe"></i>
-      <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language">
-        <option value="en">EN</option>
-        <option value="si">සිං</option>
-        <option value="ta">த</option>
-      </select>
-    </label>
+    <div class="sys-utility-bar">
+      <div class="sys-alert"><i class="fa-solid fa-hotel"></i>Hotels</div>
+      <div class="sys-utility-controls">
+        <label class="sys-select">
+          <i class="fa-solid fa-globe"></i>
+          <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="si">සිං</option>
+            <option value="ta">ත</option>
+          </select>
+        </label>
         <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()">LKR</button>
         <button class="sys-btn" onclick="toggleDarkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
       </div>
@@ -40,14 +41,6 @@
           <span data-i18n="monsoon_warning"><b>South-West Monsoon Warning:</b> Beach hotels in Galle &amp; Bentota
             down-ranked during rainy months.</span>
         </div>
-      </div>
-
-      <div style="padding:0 16px 10px; display:flex; gap:10px; align-items:center;">
-        <small data-i18n="rate_type">Pricing Rate:</small>
-        <select id="rateType" class="sys-btn" onchange="renderHotels()" style="padding:4px 8px;">
-          <option value="foreign" data-i18n="rate_foreign">Foreign Tourist Rate</option>
-          <option value="local" data-i18n="rate_local">Sri Lankan Resident Rate (-20%)</option>
-        </select>
       </div>
 
       <!-- Hotel List Output Area -->
@@ -75,12 +68,13 @@
     ];
 
     function renderHotels() {
-      const isLocal = document.getElementById('rateType').value === 'local';
       const container = document.getElementById('hotelList');
       container.innerHTML = '';
 
       hotelsData.forEach(h => {
-        const finalPrice = isLocal ? h.price * 0.8 : h.price;
+        const discountRate = 0.20; // 20% discount always applied
+        const discountedPrice = h.price * (1 - discountRate);
+
         const card = document.createElement('article');
         card.className = 'loc-hotel-card';
         card.style.cssText = 'display: flex; flex-direction: column; margin-bottom: 16px; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);';
@@ -97,7 +91,13 @@
             <div style="flex: 1;">
               <h3 style="margin: 0 0 4px 0; font-size: 16px; font-weight: 700;">${h.name}</h3>
               <p style="margin: 0 0 8px 0; font-size: 12px; opacity: 0.8;">${h.plainEnglish}</p>
-              <b data-lkr="${finalPrice}" style="color: #1d6b4f; font-size: 15px;">LKR ${finalPrice.toLocaleString()} / night</b>
+              
+              <!-- Always-on Discount Price display -->
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span style="text-decoration: line-through; color: #888; font-size: 13px;">LKR ${h.price.toLocaleString()}</span>
+                <b data-lkr="${discountedPrice}" style="color: #1d6b4f; font-size: 15px;">LKR ${discountedPrice.toLocaleString()} / night</b>
+                <span style="background: #e2f6ed; color: #1d6b4f; padding: 2px 6px; border-radius: 6px; font-size: 11px; font-weight: bold;">20% OFF</span>
+              </div>
             </div>
             <button class="arrow" onclick="alert('Booking registered for ${h.name}!')" style="width: 40px; height: 40px; border-radius: 50%; background: #1d6b4f; color: white; display: grid; place-items: center; border: none; flex-shrink: 0; cursor: pointer;">
               <i class="fa-solid fa-check"></i>
