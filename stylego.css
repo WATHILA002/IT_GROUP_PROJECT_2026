@@ -43,29 +43,20 @@ button {
 
 /* App Wrapper & Mobile Frame */
 .app {
-  max-width: 1200px;
   width: 100%;
+  max-width: 1200px;
   height: 100vh;
   height: 100dvh;
   margin: 0 auto;
   min-height: 100vh;
+  box-sizing: border-box;
   background: #ffffff;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  box-sizing: border-box;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   transition: background 0.3s, color 0.3s;
-}
-
-@media (min-width: 1024px) {
-  .app {
-    max-width: 420px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    margin: 20px auto;
-    border-radius: 24px:
-  }
 }
 
 /* Comprehensive Dark Mode Overrides */
@@ -170,6 +161,94 @@ button {
 
 .screen::-webkit-scrollbar {
   display: none;
+}
+
+/* Slide-out Drawer Base */
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -320px; /* Hidden off-screen by default */
+  width: 280px;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #0d2319; /* Deep dark green theme matching your app */
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.6);
+  transition: right 0.3s ease-in-out;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Open state class added via JavaScript */
+.nav-drawer.open {
+  right: 0;
+}
+
+/* Drawer Header with Logo & Close Button */
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Drawer Navigation Links */
+.drawer-content {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-section-title {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #d4af37; /* Gold accent */
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.drawer-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: color 0.2s;
+}
+
+.drawer-link:hover, 
+.drawer-link.active {
+  color: #3ddc97;
+}
+
+/* Background Dark Overlay */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+  z-index: 1500;
+}
+
+.drawer-overlay.open {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Top System Utility Header */
@@ -1107,7 +1186,6 @@ button {
   border-radius: 8px;
   font-size: 0.9rem;
   outline: none;
-  background: #fff;
 }
 
 .loc-primary-btn {
@@ -2458,6 +2536,15 @@ scrollbar-width: none;
   }
 }
 
+@media (min-width: 1024px) {
+  .app {
+    max-width: 420px;
+    box-shadow: 0 0 20px rgba(0,0,0,.1);
+    margin: 20px auto;
+    border-radius: 24px;
+  }
+}
+
 /* Central Floating Wrapper (Restricts Width, Creates Page Margin) */
 .planner-wrapper {
   max-width: 440px;
@@ -2622,9 +2709,9 @@ textarea.plan-field {
 }
 .plan-phone-row .plan-cc { 
   width: 96px; 
-  flex: none;
+  flex: none; 
   padding: 12px 8px;
-  text-align: centere;
+  text-align: center;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
@@ -2707,11 +2794,12 @@ textarea.plan-field {
 /* Step 2: Fixed Equal Sized Place Selector Cards Grid */
 .plan-dest-grid { 
   display: grid; 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr)); 
   gap: 8px;
-  widthP: 100%;
+  width: 100;
   box-sizing: border-box;
 }
+
 .plan-dest-card {
   position: relative;
   display: flex;
@@ -2992,7 +3080,7 @@ input[type=range] {
   font-size: 14px;
   padding: 10px;
   background: #ffffff;
-  color: var(--plan-ink);
+  color: var(--plan-link);
 }
 
 .dark-mood .plan-cc {
@@ -3001,8 +3089,8 @@ input[type=range] {
   border-color: #1f3d30;
 }
 
-.dark-mood .plan-cc {
-  background-color: #13261e;
+.dark-mood .plan-cc option {
+  background-color: #0e1c16;
   color: #f1f5f3;
 }
 
