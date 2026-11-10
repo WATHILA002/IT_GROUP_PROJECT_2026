@@ -88,7 +88,7 @@ function getDayName(dateString) {
   return date.toLocaleDateString('en-US', { weekday: 'short' });
 }
 
-// Fetch Live Weather from Open-Meteo API for Colombo / Sri Lanka (Latitude: 6.9271, Longitude: 79.8612)
+// Fetch Live Weather from Open-Meteo API for Colombo 
 async function fetchLiveWeather() {
   try {
     const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=6.9271&longitude=79.8612&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto');
