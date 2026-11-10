@@ -1,21 +1,16 @@
-/* Sri Lanka Elephant Chatbot
-   - Drag the elephant: it hangs and swings from the pointer.
-   - Let go: it falls, bounces, splats, gets dizzy, then stands up.
-   - Click/tap (without dragging): opens the chat.
-   Needs: js/knowledge.js (loaded first) and css/elephant-bot.css */
+
 (function () {
   "use strict";
 
   var KB = window.LANKA_KB;
-  // Optional settings (put BEFORE the script tags):
-  // <script>window.EBOT = { container: "main", bottomOffset: 70 };</script>
+
   var CFG = window.EBOT || {};
   var BOTTOM_OFFSET = CFG.bottomOffset || 0; // keeps elephant above a bottom nav bar
   var GRAVITY = 0.8;      // px per frame^2 (at 60fps)
   var FLOOR_GAP = 6;      // space kept under the elephant
   var DRAG_THRESHOLD = 6; // px before a press becomes a drag
 
-  /* ---------- Elephant SVG ---------- */
+  /* Elephant SVG  */
   var SVG =
     '<svg class="el" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
     '<g class="el-all">' +
@@ -65,7 +60,7 @@
       '<path d="M57 70 q3 1 6 0 M57 78 q3 1 6 0" stroke="#8fa6cb" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>' +
     '</g></svg>';
 
-  /* ---------- Build DOM ---------- */
+  /*  Build DOM  */
   var root = document.createElement("div");
   root.className = "ebot air";
   root.setAttribute("role", "button");
@@ -103,7 +98,7 @@
   var form = panel.querySelector(".ebot-form");
   var input = form.querySelector("input");
 
-  /* ---------- Position + physics state ---------- */
+  /* Position + physics state */
   var W = root.offsetWidth, H = root.offsetHeight;
   var bx = 0, by = 0, bw = window.innerWidth, bh = window.innerHeight;
   function updateBounds() {
@@ -161,7 +156,7 @@
     }, 1250);
   }
 
-  /* ---------- Main loop ---------- */
+  /* Main loop */
   function frame(now) {
     var dt = Math.min((now - last) / 16.667, 2.5);
     last = now;
@@ -212,7 +207,7 @@
     requestAnimationFrame(frame);
   }
 
-  /* ---------- Pointer: drag vs click ---------- */
+  /* Pointer: drag vs click  */
   var pressing = false, dragging = false, startX = 0, startY = 0, pid = null;
 
   root.addEventListener("pointerdown", function (e) {
@@ -268,7 +263,7 @@
     placePanel();
   });
 
-  /* ---------- Chat panel ---------- */
+  /* Chat panel */
   var isOpen = false, greeted = false;
 
   function placePanel() {
@@ -366,7 +361,7 @@
 
   form.addEventListener("submit", function (e) { e.preventDefault(); send(input.value); });
 
-  /* ---------- Go ---------- */
+  /*  Go  */
   setVis("fall");
   requestAnimationFrame(function (t) { last = t; requestAnimationFrame(frame); });
 })();
@@ -378,4 +373,17 @@ function toggleMenu() {
   
   drawer.classList.toggle('open');
   overlay.classList.toggle('open');
+}
+
+/* frequency ask questions */
+function toggleFaq(button) {
+  const item = button.parentElement;
+  const isActive = item.classList.contains('active');
+  
+
+  if (!isActive) {
+    item.classList.add('active');
+  } else {
+    item.classList.remove('active');
+  }
 }
