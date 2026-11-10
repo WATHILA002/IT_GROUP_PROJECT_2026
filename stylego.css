@@ -573,21 +573,25 @@ button {
 .top-bar {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .logo-icon {
-  font-size: 34px;
+  font-size: 35px;
   color: #ffc94d;
+  flex-shrink: 0;
 }
 
 .brand {
   flex: 1;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .brand h1 {
   font-size: 26px;
   font-weight: 800;
+  margin: 0;
 }
 
 .brand h1 span {
@@ -597,6 +601,7 @@ button {
 .brand small {
   font-size: 11px;
   opacity: 0.9;
+  display: block;
 }
 
 .icon-btn {
@@ -4843,9 +4848,10 @@ body.dark-mode,
 
 .icf-destination-card {
   position: relative;
-  min-width: 60px;
+  min-width: 80px;
   flex: 0 0 calc(33.333% - 10px);
   height: 220px;
+  width: 80;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
@@ -4924,17 +4930,119 @@ body.dark-mode,
   .icf-destination-card {
     flex: 0 0 calc(50% - 8px);
     height: 200px;
+    width: 80;
   }
 }
 
 @media (max-width: 480px) {
   .icf-destination-card {
-    flex: 0 0 60%;
+    flex: 0 0 30%;
     height: 190px;
-    width: 60%;
+    width: 30%;
   }
 }
 
 .partner-text {
   text-align: center;
+}
+
+/* blog section */
+.afk-blog-section {
+  background-color: white;
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.afk-section-title {
+  color: black;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.afk-blog-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.afk-blog-card {
+  position: relative;
+  height: 220px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Dark gradient overlay for text readability */
+.afk-blog-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 10%, rgba(0, 0, 0, 0.2) 70%);
+  z-index: 1;
+}
+
+/* Card Content Elements */
+.afk-blog-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.afk-blog-title {
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.afk-blog-date {
+  color: #d1d5db;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Normal button replacing the play icon */
+.afk-read-btn {
+  background-color: #ffffff;
+  color: #1a2321;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.afk-read-btn:hover {
+  background-color: #e2e8f0;
+  transform: scale(1.05);
 }
