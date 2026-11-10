@@ -12,7 +12,7 @@
 <body>
   <div class="app" id="appFrame">
     <div class="sys-utility-bar">
-      <div class="sys-alert"><i class="fa-solid fa-route"></i>Plan your trip</div>
+      <div class="sys-alert"><i class="fa-solid fa-route"></i>Planner</div>
       <div class="sys-utility-controls">
         <label class="sys-select">
           <i class="fa-solid fa-globe"></i>
@@ -22,10 +22,50 @@
             <option value="ta">த</option>
           </select>
         </label>
-        <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()">LKR</button>
-        <button class="sys-btn" onclick="toggleDarkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()" aria-label="Currency">LKR</button>
+        <button class="sys-btn sys-theme-btn" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-sun"></i><i class="fa-solid fa-moon"></i>
+          <button class="sys-btn sys-theme-btn" onclick="toggleMenu()" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </button>
+
+        <!-- Slide-out Drawer Navigation Menu -->
+        <div id="navDrawer" class="nav-drawer">
+          <div class="drawer-header">
+            <div class="footer-logo" style="margin-bottom:0;">
+              <i class="fa-solid fa-umbrella-beach logo-icon-gold" style="font-size:24px;"></i>
+              <div class="logo-text">
+                <h2 class="color123">LANKA STAY</h2>
+              </div>
+            </div>
+            <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu"><i
+                class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div class="drawer-content">
+            <span class="drawer-section-title">EXPLORE</span>
+            <a href="index.html" class="drawer-link active">Home</a>
+            <a href="hotel.html" class="drawer-link">Hotel Packages</a>
+            <a href="explore.html" class="drawer-link">Explore</a>
+            <a href="planner.html" class="drawer-link">Trip Planner</a>
+            <a href="explore.html" class="drawer-link">Destinations</a>
+            <a href="planner.html" class="drawer-link">Day Tours</a>
+            <a href="profile.html" class="drawer-link">Profile</a>
+
+            <span class="drawer-section-title">MORE</span>
+            <a href="index.html" class="drawer-link">Why Us</a>
+            <a href="index.html" class="drawer-link">Blog</a>
+            <a href="index.html" class="drawer-link">Testimonials</a>
+            <a href="saved.html" class="drawer-link">Saved</a>
+          </div>
+        </div>
+
+        <!-- Background Dark Overlay -->
+        <div id="drawerOverlay" class="drawer-overlay" onclick="toggleMenu()"></div>
       </div>
     </div>
+
 
     <main class="screen planner-screen">
       <header class="page-header">
@@ -34,7 +74,8 @@
       </header>
 
       <div class="planner-wrapper">
-        <div class="plan-progress" id="progress"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="plan-progress" id="progress">
+          <span></span><span></span><span></span><span></span><span></span><span></span></div>
         <p class="plan-step-meta" id="stepMeta"><b>Step 1 of 6</b></p>
 
         <!-- STEP 1: Personal Quote -->
@@ -42,17 +83,23 @@
           <div class="plan-card">
             <div class="plan-card-header">
               <h1 class="plan-heading">Get a Personal Quote</h1>
-              <p class="plan-sub">Tell us about your travel plans and contact details so we can tailor the best experience for you.</p>
+              <p class="plan-sub">Tell us about your travel plans and contact details so we can tailor the best
+                experience for you.</p>
             </div>
 
             <div class="plan-section">
               <label class="plan-lbl">What are you planning?<b class="plan-req"></b></label>
               <div class="plan-types" id="types">
-                <button type="button" class="plan-type wide" data-g="style" data-v="Tailor-Made"><i class="fa-regular fa-pen-to-square"></i>Tailor-Made</button>
-                <button type="button" class="plan-type wide" data-g="style" data-v="Honeymoon"><i class="fas fa-heart"></i>Honeymoon</button>
-                <button type="button" class="plan-type" data-g="who" data-v="Family"><i class="fa-solid fa-people-roof"></i>Family</button>
-                <button type="button" class="plan-type" data-g="who" data-v="Group"><i class="fa-solid fa-users"></i>Group</button>
-                <button type="button" class="plan-type wide" data-g="who" data-v="MICE"><i class="fa-solid fa-people-group"></i>MICE</button>
+                <button type="button" class="plan-type wide" data-g="style" data-v="Tailor-Made"><i
+                    class="fa-regular fa-pen-to-square"></i>Tailor-Made</button>
+                <button type="button" class="plan-type wide" data-g="style" data-v="Honeymoon"><i
+                    class="fas fa-heart"></i>Honeymoon</button>
+                <button type="button" class="plan-type" data-g="who" data-v="Family"><i
+                    class="fa-solid fa-people-roof"></i>Family</button>
+                <button type="button" class="plan-type" data-g="who" data-v="Group"><i
+                    class="fa-solid fa-users"></i>Group</button>
+                <button type="button" class="plan-type wide" data-g="who" data-v="MICE"><i
+                    class="fa-solid fa-people-group"></i>MICE</button>
               </div>
               <p class="plan-err" id="err-type"></p>
             </div>
@@ -63,7 +110,8 @@
               <p class="plan-err" id="err-name"></p>
 
               <label class="plan-lbl" for="email">Email Address <b class="plan-req">*</b></label>
-              <input class="plan-field" id="email" type="email" placeholder="e.g. john@example.com" autocomplete="email">
+              <input class="plan-field" id="email" type="email" placeholder="e.g. john@example.com"
+                autocomplete="email">
               <p class="plan-err" id="err-email"></p>
 
               <label class="plan-lbl">Phone / WhatsApp <span class="plan-req">*</span></label>
@@ -98,9 +146,10 @@
           <div class="plan-card">
             <div class="plan-card-header">
               <h2 class="plan-title">Select Destinations</h2>
-              <p class="plan-sub">Where would you like to travel? Select all the destinations you wish to visit in Sri Lanka.</p>
+              <p class="plan-sub">Where would you like to travel? Select all the destinations you wish to visit in Sri
+                Lanka.</p>
             </div>
-            
+
             <div class="plan-dest-grid" id="destGrid"></div>
             <p class="plan-err" id="err-dest"></p>
 
@@ -118,18 +167,23 @@
           <div class="plan-card">
             <div class="plan-card-header">
               <h2 class="plan-title">Travel Dates &amp; Group</h2>
-              <p class="plan-sub">Pick your estimated arrival and departure dates, and tell us how many guests are travelling.</p>
+              <p class="plan-sub">Pick your estimated arrival and departure dates, and tell us how many guests are
+                travelling.</p>
             </div>
 
             <div class="plan-cal-head">
               <span id="calTitle" class="plan-cal-title"></span>
               <div class="plan-cal-nav-wrap">
-                <button type="button" class="plan-cal-nav" id="calPrev" aria-label="Previous month"><i class="fa-solid fa-chevron-left"></i></button>
-                <button type="button" class="plan-cal-nav" id="calNext" aria-label="Next month"><i class="fa-solid fa-chevron-right"></i></button>
+                <button type="button" class="plan-cal-nav" id="calPrev" aria-label="Previous month"><i
+                    class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="plan-cal-nav" id="calNext" aria-label="Next month"><i
+                    class="fa-solid fa-chevron-right"></i></button>
               </div>
             </div>
 
-            <div class="plan-cal-grid plan-cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+            <div class="plan-cal-grid plan-cal-dow">
+              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
             <div class="plan-cal-grid" id="calDays"></div>
 
             <div class="plan-section">
@@ -163,7 +217,8 @@
           <div class="plan-card">
             <div class="plan-card-header">
               <h2 class="plan-title">Budget Details</h2>
-              <p class="plan-sub">Set your approximate spending limit and choose your desired accommodation style tier.</p>
+              <p class="plan-sub">Set your approximate spending limit and choose your desired accommodation style tier.
+              </p>
             </div>
 
             <div class="plan-section">
@@ -202,7 +257,8 @@
           <div class="plan-card">
             <div class="plan-card-header">
               <h2 class="plan-title">Your Preferences</h2>
-              <p class="plan-sub">Customize your stay types, favorite travel activities, and add any special requirements.</p>
+              <p class="plan-sub">Customize your stay types, favorite travel activities, and add any special
+                requirements.</p>
             </div>
 
             <div class="plan-section">
@@ -218,18 +274,25 @@
             <div class="plan-section">
               <h3 class="plan-card-title">Activities</h3>
               <div class="plan-chips" id="actChips">
-                <button type="button" class="plan-chip plan-pill" data-v="Cultural Tours"><i class="fa-solid fa-landmark"></i>Cultural Tours</button>
-                <button type="button" class="plan-chip plan-pill" data-v="Wildlife Safari"><i class="fa-solid fa-paw"></i>Wildlife Safari</button>
-                <button type="button" class="plan-chip plan-pill" data-v="Hiking"><i class="fa-solid fa-person-hiking"></i>Hiking</button>
-                <button type="button" class="plan-chip plan-pill" data-v="Beach &amp; Surf"><i class="fa-solid fa-umbrella-beach"></i>Beach &amp; Surf</button>
-                <button type="button" class="plan-chip plan-pill" data-v="Culinary Experiences"><i class="fa-solid fa-utensils"></i>Culinary Experiences</button>
-                <button type="button" class="plan-chip plan-pill" data-v="Tea Trails"><i class="fa-solid fa-mug-hot"></i>Tea Trails</button>
+                <button type="button" class="plan-chip plan-pill" data-v="Cultural Tours"><i
+                    class="fa-solid fa-landmark"></i>Cultural Tours</button>
+                <button type="button" class="plan-chip plan-pill" data-v="Wildlife Safari"><i
+                    class="fa-solid fa-paw"></i>Wildlife Safari</button>
+                <button type="button" class="plan-chip plan-pill" data-v="Hiking"><i
+                    class="fa-solid fa-person-hiking"></i>Hiking</button>
+                <button type="button" class="plan-chip plan-pill" data-v="Beach &amp; Surf"><i
+                    class="fa-solid fa-umbrella-beach"></i>Beach &amp; Surf</button>
+                <button type="button" class="plan-chip plan-pill" data-v="Culinary Experiences"><i
+                    class="fa-solid fa-utensils"></i>Culinary Experiences</button>
+                <button type="button" class="plan-chip plan-pill" data-v="Tea Trails"><i
+                    class="fa-solid fa-mug-hot"></i>Tea Trails</button>
               </div>
             </div>
 
             <div class="plan-section">
               <h3 class="plan-card-title">Special Requests</h3>
-              <textarea class="plan-field" id="requests" rows="4" placeholder="Mention dietary preferences, accessibility needs, or special occasions..."></textarea>
+              <textarea class="plan-field" id="requests" rows="4"
+                placeholder="Mention dietary preferences, accessibility needs, or special occasions..."></textarea>
             </div>
 
             <div class="plan-btn-row">
@@ -247,7 +310,8 @@
             <h2 class="plan-title big">Almost Done!</h2>
             <p class="plan-sub mb-14">Review your travel plan summary before running our smart AI prediction engine.</p>
             <div class="plan-summary" id="summary"></div>
-            <p class="plan-note">Once you click below, our system will calculate your estimated fit score, costs, and travel route recommendations.</p>
+            <p class="plan-note">Once you click below, our system will calculate your estimated fit score, costs, and
+              travel route recommendations.</p>
 
             <div class="plan-btn-row">
               <button type="button" class="plan-btn plan-btn-back" data-back>Back</button>
@@ -258,7 +322,8 @@
           <div class="plan-card plan-center" id="loadingCard" hidden>
             <div class="plan-spinner"></div>
             <h2 class="plan-title big">Analysing your trip…</h2>
-            <p class="plan-note">Our AI model is checking weather conditions, budget alignment, and optimal route distances.</p>
+            <p class="plan-note">Our AI model is checking weather conditions, budget alignment, and optimal route
+              distances.</p>
           </div>
 
           <div id="resultWrap" hidden>
@@ -266,8 +331,13 @@
             <p class="plan-src" id="srcNote"></p>
 
             <div class="plan-card plan-score-card">
-              <div class="plan-ring" id="ring"><div><b id="fitScore">0</b><small>Trip Fit</small></div></div>
-              <div class="plan-score-info"><h3 id="fitLabel"></h3><p id="fitText"></p></div>
+              <div class="plan-ring" id="ring">
+                <div><b id="fitScore">0</b><small>Trip Fit</small></div>
+              </div>
+              <div class="plan-score-info">
+                <h3 id="fitLabel"></h3>
+                <p id="fitText"></p>
+              </div>
             </div>
 
             <div class="plan-stats">
@@ -277,10 +347,22 @@
               <div class="plan-stat"><small>Road travel</small><b id="travelHrs"></b><span>between stops</span></div>
             </div>
 
-            <div class="plan-card"><h3 class="plan-card-title">About your trip</h3><p class="plan-desc" id="descText"></p></div>
-            <div class="plan-card"><h3 class="plan-card-title">Recommended stays</h3><div id="hotelList"></div></div>
-            <div class="plan-card"><h3 class="plan-card-title">Suggested itinerary</h3><ol class="plan-itin" id="itin"></ol></div>
-            <div class="plan-card"><h3 class="plan-card-title">Good to know</h3><ul class="plan-notes" id="notes"></ul></div>
+            <div class="plan-card">
+              <h3 class="plan-card-title">About your trip</h3>
+              <p class="plan-desc" id="descText"></p>
+            </div>
+            <div class="plan-card">
+              <h3 class="plan-card-title">Recommended stays</h3>
+              <div id="hotelList"></div>
+            </div>
+            <div class="plan-card">
+              <h3 class="plan-card-title">Suggested itinerary</h3>
+              <ol class="plan-itin" id="itin"></ol>
+            </div>
+            <div class="plan-card">
+              <h3 class="plan-card-title">Good to know</h3>
+              <ul class="plan-notes" id="notes"></ul>
+            </div>
 
             <button type="button" class="plan-btn plan-orange" id="submitBtn">Submit Quote Request</button>
             <button type="button" class="plan-btn plan-ghost" id="editBtn">Edit My Plan</button>
@@ -289,7 +371,8 @@
           <div class="plan-card plan-center plan-done" id="doneCard" hidden>
             <div class="plan-tick"><i class="fa-solid fa-check"></i></div>
             <h2 class="plan-title big">Thank You!</h2>
-            <p class="plan-note">Your quote request and prediction have been saved successfully. Our travel team will contact you within 24 hours.</p>
+            <p class="plan-note">Your quote request and prediction have been saved successfully. Our travel team will
+              contact you within 24 hours.</p>
             <a class="plan-btn plan-primary plan-link" href="index.html">Back to Home</a>
           </div>
 
@@ -302,474 +385,469 @@
         </section>
       </div>
     </main>
+  </footer>
 
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-      <a href="index.html"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
-      <a href="explore.html"><i class="fa-solid fa-compass"></i><span data-i18n="explore">Explore</span></a>
-      <a href="hotel.html"><i class="fa-solid fa-hotel"></i><span data-i18n="hotels">Hotels</span></a>
-      <a href="planner.html" class="active"><i class="fa-solid fa-route"></i><span data-i18n="planner">Planner</span></a>
-      <a href="profile.html"><i class="fa-regular fa-user"></i><span data-i18n="profile">Profile</span></a>
-    </nav>
   </div>
 
-  <a class="wa-fab" href="https://wa.me/94770000000" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <a class="wa-fab" href="https://wa.me/94770000000" target="_blank" rel="noopener" aria-label="WhatsApp"><i
+      class="fa-brands fa-whatsapp"></i></a>
 
   <script src="translations.js"></script>
   <script src="app.js"></script>
+  <script src="elephant-bot.js"></script>
   <script>
-/* ===== Lanka Go - Planner (quote wizard) ===== */
-(function () {
-  'use strict';
+    /* Lanka Go - Planner (quote wizard) */
+    (function () {
+      'use strict';
 
-  var API = { BASE: '', PREDICT: '/predict', SAVE: '/quotes' };
+      var API = {BASE: '', PREDICT: '/predict', SAVE: '/quotes'};
 
-  var TOTAL = 6;
-  var step = 1;
-  var sixMode = 'summary';
+      var TOTAL = 6;
+      var step = 1;
+      var sixMode = 'summary';
 
-  var DESTINATIONS = [
-    { name: 'Anuradhapura' },
-    { name: 'Sigiriya' },
-    { name: 'Ella' },
-    { name: 'Nuwara Eliya' },
-    { name: 'Colombo' },
-    { name: 'Galle' },
-    { name: 'Kandy' },
-    { name: 'Yala' },
-    { name: 'others'}
-  ];
+      var DESTINATIONS = [
+        {name: 'Anuradhapura'},
+        {name: 'Sigiriya'},
+        {name: 'Ella'},
+        {name: 'Nuwara Eliya'},
+        {name: 'Colombo'},
+        {name: 'Galle'},
+        {name: 'Kandy'},
+        {name: 'Yala'},
+        {name: 'others'}
+      ];
 
-  var state = {
-    type: '', style: '', who: '', name: '', email: '', phone: '',
-    dests: [], start: null, end: null,
-    adults: '2', children: '0',
-    budget: 3000, tier: 'Mid-Range',
-    stays: [], acts: [], requests: ''
-  };
+      var state = {
+        type: '', style: '', who: '', name: '', email: '', phone: '',
+        dests: [], start: null, end: null,
+        adults: '2', children: '0',
+        budget: 3000, tier: 'Mid-Range',
+        stays: [], acts: [], requests: ''
+      };
 
-  function $(s, r) { return (r || document).querySelector(s); }
-  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+      function $(s, r) {return (r || document).querySelector(s);}
+      function $$(s, r) {return Array.prototype.slice.call((r || document).querySelectorAll(s));}
 
-  function goTo(n) {
-    step = Math.max(1, Math.min(TOTAL, n));
-    $$('.plan-step').forEach(function (s) {
-      s.classList.toggle('active', Number(s.dataset.step) === step);
-    });
-    $$('#progress span').forEach(function (b, i) {
-      b.className = i + 1 < step ? 'done' : (i + 1 === step ? 'now' : '');
-    });
-    $('#stepMeta').textContent = 'Step ' + step + ' of ' + TOTAL;
-    if (step === 6) { renderSummary(); showSix('summary'); }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+      function goTo(n) {
+        step = Math.max(1, Math.min(TOTAL, n));
+        $$('.plan-step').forEach(function (s) {
+          s.classList.toggle('active', Number(s.dataset.step) === step);
+        });
+        $$('#progress span').forEach(function (b, i) {
+          b.className = i + 1 < step ? 'done' : (i + 1 === step ? 'now' : '');
+        });
+        $('#stepMeta').textContent = 'Step ' + step + ' of ' + TOTAL;
+        if (step === 6) {renderSummary(); showSix('summary');}
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }
 
-  function showErr(id, msg, fieldId) {
-    var el = $('#' + id);
-    if (el) el.textContent = msg || '';
-    if (fieldId && $('#' + fieldId)) $('#' + fieldId).classList.toggle('bad', !!msg);
-  }
+      function showErr(id, msg, fieldId) {
+        var el = $('#' + id);
+        if (el) el.textContent = msg || '';
+        if (fieldId && $('#' + fieldId)) $('#' + fieldId).classList.toggle('bad', !!msg);
+      }
 
-  function validate(n) {
-    var ok = true;
-    if (n === 1) {
-      state.name = $('#fullName').value.trim();
-      state.email = $('#email').value.trim();
-      state.phone = $('#userPhone') ? $('#userPhone').value.trim() : '';
-      
-      showErr('err-type', state.type ? '' : 'Please choose what you are planning.');
-      showErr('err-name', state.name.length < 2 ? 'Please enter your full name.' : '', 'fullName');
-      
-      var mailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email);
-      showErr('err-email', mailOk ? '' : 'Please enter a valid email.', 'email');
-      
-      var digits = state.phone.replace(/\D/g, '');
-      showErr('err-phone', digits.length < 7 ? 'Please enter a valid mobile number.' : '', 'userPhone');
-      
-      ok = !!state.type && state.name.length >= 2 && mailOk && digits.length >= 7;
-    }
-    if (n === 2) {
-      ok = state.dests.length > 0;
-      showErr('err-dest', ok ? '' : 'Select at least one destination.');
-    }
-    if (n === 3) {
-      ok = !!(state.start && state.end);
-      showErr('err-dates', ok ? '' : 'Please pick your arrival and departure dates.');
-      state.adults = $('#adults').value;
-      state.children = $('#children').value;
-    }
-    if (n === 5) state.requests = $('#requests').value.trim();
-    return ok;
-  }
+      function validate(n) {
+        var ok = true;
+        if (n === 1) {
+          state.name = $('#fullName').value.trim();
+          state.email = $('#email').value.trim();
+          state.phone = $('#userPhone') ? $('#userPhone').value.trim() : '';
 
-  $$('[data-next]').forEach(function (b) {
-    b.addEventListener('click', function () { if (validate(step)) goTo(step + 1); });
-  });
+          showErr('err-type', state.type ? '' : 'Please choose what you are planning.');
+          showErr('err-name', state.name.length < 2 ? 'Please enter your full name.' : '', 'fullName');
 
-  $$('[data-back]').forEach(function (b) {
-    b.addEventListener('click', function () { goTo(step - 1); });
-  });
+          var mailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email);
+          showErr('err-email', mailOk ? '' : 'Please enter a valid email.', 'email');
 
-  $$('#types .plan-type').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var g = b.dataset.g, was = b.classList.contains('sel');
-      $$('#types .plan-type[data-g="' + g + '"]').forEach(function (x) { x.classList.remove('sel'); });
-      if (!was) b.classList.add('sel');
-      state[g] = was ? '' : b.dataset.v;
-      state.type = [state.style, state.who].filter(Boolean).join(' ');
-      showErr('err-type', '');
-    });
-  });
+          var digits = state.phone.replace(/\D/g, '');
+          showErr('err-phone', digits.length < 7 ? 'Please enter a valid mobile number.' : '', 'userPhone');
 
-  // Render text-only destination cards
-  var grid = $('#destGrid');
-  DESTINATIONS.forEach(function (d) {
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'plan-dest-card';
-    b.innerHTML = '<i class="fa-solid fa-location-dot dest-icon"></i>' +
-                  '<span class="dest-name">' + d.name + '</span>' +
-                  '<span class="plan-check"><i class="fa-solid fa-check"></i></span>';
-    b.addEventListener('click', function () {
-      var i = state.dests.indexOf(d.name);
-      if (i > -1) state.dests.splice(i, 1); else state.dests.push(d.name);
-      b.classList.toggle('sel', i === -1);
-      showErr('err-dest', '');
-    });
-    grid.appendChild(b);
-  });
+          ok = !!state.type && state.name.length >= 2 && mailOk && digits.length >= 7;
+        }
+        if (n === 2) {
+          ok = state.dests.length > 0;
+          showErr('err-dest', ok ? '' : 'Select at least one destination.');
+        }
+        if (n === 3) {
+          ok = !!(state.start && state.end);
+          showErr('err-dates', ok ? '' : 'Please pick your arrival and departure dates.');
+          state.adults = $('#adults').value;
+          state.children = $('#children').value;
+        }
+        if (n === 5) state.requests = $('#requests').value.trim();
+        return ok;
+      }
 
-  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var today = new Date(); today.setHours(0, 0, 0, 0);
-  var view = new Date(today.getFullYear(), today.getMonth(), 1);
+      $$('[data-next]').forEach(function (b) {
+        b.addEventListener('click', function () {if (validate(step)) goTo(step + 1);});
+      });
 
-  function fmt(d) {
-    return d ? d.getDate() + ' ' + MONTHS[d.getMonth()].slice(0, 3) + ' ' + d.getFullYear() : '';
-  }
+      $$('[data-back]').forEach(function (b) {
+        b.addEventListener('click', function () {goTo(step - 1);});
+      });
 
-  function renderCal() {
-    $('#calTitle').textContent = MONTHS[view.getMonth()] + ' ' + view.getFullYear();
-    var days = $('#calDays');
-    days.innerHTML = '';
-    var first = new Date(view.getFullYear(), view.getMonth(), 1).getDay();
-    var count = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
-    for (var e = 0; e < first; e++) {
-      var sp = document.createElement('span'); sp.className = 'plan-day empty'; days.appendChild(sp);
-    }
-    for (var n = 1; n <= count; n++) {
-      (function (n) {
-        var d = new Date(view.getFullYear(), view.getMonth(), n);
+      $$('#types .plan-type').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var g = b.dataset.g, was = b.classList.contains('sel');
+          $$('#types .plan-type[data-g="' + g + '"]').forEach(function (x) {x.classList.remove('sel');});
+          if (!was) b.classList.add('sel');
+          state[g] = was ? '' : b.dataset.v;
+          state.type = [state.style, state.who].filter(Boolean).join(' ');
+          showErr('err-type', '');
+        });
+      });
+
+      // Render text-only destination cards
+      var grid = $('#destGrid');
+      DESTINATIONS.forEach(function (d) {
         var b = document.createElement('button');
         b.type = 'button';
-        b.className = 'plan-day';
-        b.textContent = n;
-        var t = d.getTime();
-        if (d < today) { b.classList.add('off'); b.disabled = true; }
-        if (state.start && t === state.start.getTime()) b.classList.add('range', 'start');
-        if (state.end && t === state.end.getTime()) b.classList.add('range', 'end');
-        if (state.start && state.end && t > state.start.getTime() && t < state.end.getTime()) b.classList.add('range');
-        if (state.start && !state.end && t === state.start.getTime()) b.classList.add('end');
-        b.addEventListener('click', function () { pick(d); });
-        days.appendChild(b);
-      })(n);
-    }
-  }
-
-  function pick(d) {
-    if (!state.start || state.end || d < state.start) { state.start = d; state.end = null; }
-    else { state.end = d; }
-    $('#arrival').value = fmt(state.start);
-    $('#departure').value = fmt(state.end);
-    showErr('err-dates', '');
-    renderCal();
-  }
-
-  $('#calPrev').addEventListener('click', function () {
-    var prev = new Date(view.getFullYear(), view.getMonth() - 1, 1);
-    if (prev >= new Date(today.getFullYear(), today.getMonth(), 1)) { view = prev; renderCal(); }
-  });
-  $('#calNext').addEventListener('click', function () {
-    view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderCal();
-  });
-
-  function fillSelect(id, from, to, def) {
-    var s = $('#' + id);
-    for (var i = from; i <= to; i++) {
-      var o = document.createElement('option'); o.value = i; o.textContent = i;
-      if (i === def) o.selected = true;
-      s.appendChild(o);
-    }
-  }
-  fillSelect('adults', 1, 12, 2);
-  fillSelect('children', 0, 8, 0);
-  renderCal();
-
-  $('#budget').addEventListener('input', function (e) {
-    state.budget = Number(e.target.value);
-    $('#budgetVal').textContent = state.budget;
-  });
-  $$('input[name=tier]').forEach(function (r) {
-    r.addEventListener('change', function () { state.tier = r.value; });
-  });
-
-  function chipGroup(id, list) {
-    $$('#' + id + ' .plan-chip').forEach(function (c) {
-      c.addEventListener('click', function () {
-        var v = c.dataset.v, i = list.indexOf(v);
-        if (i > -1) list.splice(i, 1); else list.push(v);
-        c.classList.toggle('sel', i === -1);
+        b.className = 'plan-dest-card';
+        b.innerHTML = '<i class="fa-solid fa-location-dot dest-icon"></i>' +
+          '<span class="dest-name">' + d.name + '</span>' +
+          '<span class="plan-check"><i class="fa-solid fa-check"></i></span>';
+        b.addEventListener('click', function () {
+          var i = state.dests.indexOf(d.name);
+          if (i > -1) state.dests.splice(i, 1); else state.dests.push(d.name);
+          b.classList.toggle('sel', i === -1);
+          showErr('err-dest', '');
+        });
+        grid.appendChild(b);
       });
-    });
-  }
-  chipGroup('stayChips', state.stays);
-  chipGroup('actChips', state.acts);
 
-  function renderSummary() {
-    var rows = [
-      ['Planning', state.type],
-      ['Destinations', state.dests.join(', ')],
-      ['Dates', fmt(state.start) + ' – ' + fmt(state.end)],
-      ['Group', state.adults + ' adult' + (state.adults === '1' ? '' : 's') + (Number(state.children) ? ', ' + state.children + ' child' + (state.children === '1' ? '' : 'ren') : '')],
-      ['Budget', '$' + state.budget + ' · ' + state.tier],
-      ['Stay', state.stays.join(', ') || 'Any'],
-      ['Activities', state.acts.join(', ') || 'Any'],
-      ['Special Requests', state.requests || 'None']
-    ];
-    var box = $('#summary');
-    box.innerHTML = '';
-    rows.forEach(function (r) {
-      var row = document.createElement('div');
-      var b = document.createElement('b'); b.textContent = r[0];
-      var s = document.createElement('span'); s.textContent = r[1];
-      row.appendChild(b); row.appendChild(s); box.appendChild(row);
-    });
-  }
+      var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      var view = new Date(today.getFullYear(), today.getMonth(), 1);
 
-  function showSix(mode) {
-    sixMode = mode;
-    $('#summaryCard').hidden = mode !== 'summary';
-    $('#loadingCard').hidden = mode !== 'loading';
-    $('#resultWrap').hidden = mode !== 'result';
-    $('#doneCard').hidden = mode !== 'done';
-    $('#stepMeta').textContent = mode === 'result' ? 'Prediction ready' : (mode === 'done' ? 'Completed' : 'Step 6 of 6');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+      function fmt(d) {
+        return d ? d.getDate() + ' ' + MONTHS[d.getMonth()].slice(0, 3) + ' ' + d.getFullYear() : '';
+      }
 
-  function nightsBetween() {
-    return Math.max(1, Math.round((state.end - state.start) / 86400000));
-  }
+      function renderCal() {
+        $('#calTitle').textContent = MONTHS[view.getMonth()] + ' ' + view.getFullYear();
+        var days = $('#calDays');
+        days.innerHTML = '';
+        var first = new Date(view.getFullYear(), view.getMonth(), 1).getDay();
+        var count = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+        for (var e = 0; e < first; e++) {
+          var sp = document.createElement('span'); sp.className = 'plan-day empty'; days.appendChild(sp);
+        }
+        for (var n = 1; n <= count; n++) {
+          (function (n) {
+            var d = new Date(view.getFullYear(), view.getMonth(), n);
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'plan-day';
+            b.textContent = n;
+            var t = d.getTime();
+            if (d < today) {b.classList.add('off'); b.disabled = true;}
+            if (state.start && t === state.start.getTime()) b.classList.add('range', 'start');
+            if (state.end && t === state.end.getTime()) b.classList.add('range', 'end');
+            if (state.start && state.end && t > state.start.getTime() && t < state.end.getTime()) b.classList.add('range');
+            if (state.start && !state.end && t === state.start.getTime()) b.classList.add('end');
+            b.addEventListener('click', function () {pick(d);});
+            days.appendChild(b);
+          })(n);
+        }
+      }
 
-  function buildPayload() {
-    var ccEl = $('#userCountry');
-    var ccVal = ccEl ? ccEl.value : '';
-    return {
-      plan_type: state.type,
-      trip_style: state.style,
-      traveller_type: state.who,
-      full_name: state.name,
-      email: state.email,
-      phone: ccVal + ' ' + state.phone,
-      destinations: state.dests,
-      arrival: iso(state.start),
-      departure: iso(state.end),
-      nights: nightsBetween(),
-      adults: Number(state.adults),
-      children: Number(state.children),
-      budget_usd: state.budget,
-      budget_tier: state.tier,
-      accommodation: state.stays,
-      activities: state.acts,
-      special_requests: state.requests
-    };
-  }
+      function pick(d) {
+        if (!state.start || state.end || d < state.start) {state.start = d; state.end = null;}
+        else {state.end = d;}
+        $('#arrival').value = fmt(state.start);
+        $('#departure').value = fmt(state.end);
+        showErr('err-dates', '');
+        renderCal();
+      }
 
-  function iso(d) {
-    var m = d.getMonth() + 1, day = d.getDate();
-    return d.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (day < 10 ? '0' : '') + day;
-  }
-
-  function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
-
-  function callApi(path, body, ms) {
-    var ctrl = new AbortController();
-    var timer = setTimeout(function () { ctrl.abort(); }, ms || 30000);
-    return fetch(API.BASE.replace(/\/$/, '') + path, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-      body: JSON.stringify(body),
-      signal: ctrl.signal
-    }).then(function (res) {
-      clearTimeout(timer);
-      if (!res.ok) throw new Error('API error ' + res.status);
-      return res.json();
-    });
-  }
-
-  var GOOD = {
-    'Colombo': [12,1,2,3], 'Galle': [12,1,2,3,4], 'Kandy': [1,2,3,4,8,9], 'Sigiriya': [1,2,3,4,5,6,7,8,9],
-    'Anuradhapura': [1,2,3,4,5,6,7,8,9], 'Ella': [1,2,3,4,8,9], 'Nuwara Eliya': [2,3,4,8], 'Yala': [2,3,4,5,6,7]
-  };
-  var BLURB = {
-    'Anuradhapura': 'Explore the ancient sacred city: Ruwanwelisaya and the Sri Maha Bodhi tree.',
-    'Sigiriya': 'Climb the Lion Rock fortress and enjoy a village tour nearby.',
-    'Ella': 'Nine Arch Bridge, Little Adam’s Peak and a scenic hill-country train ride.',
-    'Nuwara Eliya': 'Tea estates, Gregory Lake and cool “Little England” air.',
-    'Colombo': 'Galle Face Green, local markets, museums and street food.',
-    'Galle': 'Walk the Galle Fort walls, relax on the beach and catch the sunset.',
-    'Kandy': 'Temple of the Tooth, the lake walk and Peradeniya Botanical Gardens.',
-    'Yala': 'Morning and evening jeep safaris for leopards and elephants.'
-  };
-
-  function mockPredict(p) {
-    var base = { 'Mid-Range': 85, 'Luxury': 220, 'Boutique': 140 }[p.budget_tier] || 100;
-    var pp = p.nights * base + p.destinations.length * 35 + p.activities.length * 25;
-    var total = pp * p.adults + pp * 0.6 * p.children;
-    var month = Number(p.arrival.slice(5, 7));
-    var score = p.budget_usd >= pp ? Math.min(92, 72 + (p.budget_usd / pp - 1) * 30) : 72 * (p.budget_usd / pp);
-    var notes = [], wet = [];
-    p.destinations.forEach(function (d) { if (GOOD[d] && GOOD[d].indexOf(month) === -1) wet.push(d); });
-    score -= wet.length * 6;
-    if (wet.length) notes.push('Expect showers in ' + wet.join(', ') + ' around your travel dates. Pack a light rain jacket.');
-    if (p.budget_usd < pp) notes.push('Your budget is below the estimated cost. Consider fewer nights or a Mid-Range tier.');
-    if (p.children > 0) notes.push('Travelling with children: we will prefer family rooms and shorter drives.');
-    if (p.destinations.length > 4) notes.push('Many stops in a short time means long driving days. Consider dropping one destination.');
-    var hops = Math.max(0, p.destinations.length - 1);
-    score = Math.max(20, Math.min(96, Math.round(score - hops * 1.5)));
-
-    var perDest = Math.max(1, Math.floor(p.nights / p.destinations.length)), day = 1;
-    var itin = p.destinations.map(function (d, i) {
-      var n = i === p.destinations.length - 1 ? Math.max(1, p.nights - perDest * i) : perDest;
-      var from = day; day += n;
-      return { day: n > 1 ? 'Days ' + from + '–' + (from + n - 1) : 'Day ' + from, title: d, details: BLURB[d] || 'Enjoy the best of ' + d + '.' };
-    });
-    var hotels = p.destinations.slice(0, 4).map(function (d) {
-      return { name: p.budget_tier + ' stay in ' + d, location: d, price_per_night_usd: Math.round(base * 1.4) };
-    });
-    var bestMonths = wet.length ? 'Dec – Mar' : 'Your dates';
-    return {
-      fit_score: score,
-      predicted_cost_usd_per_person: pp,
-      cost_low: pp * 0.88, cost_high: pp * 1.12,
-      total_cost_usd: total,
-      best_season: bestMonths,
-      weather: wet.length ? 'Some wet weather likely' : 'Mostly favourable',
-      travel_hours: Math.round(hops * 2.8 * 10) / 10,
-      summary: 'A ' + p.nights + '-night ' + p.plan_type.toLowerCase() + ' trip for ' + p.adults + ' adult' + (p.adults > 1 ? 's' : '') +
-        (p.children ? ' and ' + p.children + ' child' + (p.children > 1 ? 'ren' : '') : '') + ', covering ' + p.destinations.join(', ') +
-        '. Based on your ' + p.budget_tier + ' preference and a budget of ' + money(p.budget_usd) + ' per person, the estimated cost is ' + money(pp) +
-        ' per person.' + (p.activities.length ? ' Included activities: ' + p.activities.join(', ') + '.' : ''),
-      hotels: hotels,
-      itinerary: itin,
-      notes: notes.length ? notes : ['Your plan looks well balanced for the season and budget.'],
-      source: 'demo'
-    };
-  }
-
-  function normalise(d) {
-    return {
-      fit_score: Number(d.fit_score != null ? d.fit_score : d.trip_fit_score) || 0,
-      predicted_cost_usd_per_person: Number(d.predicted_cost_usd_per_person != null ? d.predicted_cost_usd_per_person : d.predicted_cost) || 0,
-      cost_low: Number(d.cost_low) || 0, cost_high: Number(d.cost_high) || 0,
-      total_cost_usd: Number(d.total_cost_usd) || 0,
-      best_season: d.best_season || '–', weather: d.weather || '',
-      travel_hours: d.travel_hours != null ? d.travel_hours : '–',
-      summary: d.summary || d.description || '',
-      hotels: d.hotels || d.recommended_hotels || [],
-      itinerary: d.itinerary || [],
-      notes: d.notes || [],
-      source: 'api'
-    };
-  }
-
-  function el(tag, cls, text) {
-    var e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (text != null) e.textContent = text;
-    return e;
-  }
-
-  var lastPrediction = null;
-
-  function renderResult(r) {
-    lastPrediction = r;
-    var s = Math.max(0, Math.min(100, Math.round(r.fit_score)));
-    $('#ring').style.setProperty('--p', s);
-    $('#fitScore').textContent = s;
-    $('#fitLabel').textContent = s >= 80 ? 'Excellent match' : (s >= 60 ? 'Good match' : (s >= 40 ? 'Fair match' : 'Needs adjusting'));
-    $('#fitText').textContent = s >= 60 ? 'Your plan fits the season, budget and route well.' : 'A few changes could make this trip smoother. See the notes below.';
-    $('#costPP').textContent = money(r.predicted_cost_usd_per_person);
-    $('#costRange').textContent = r.cost_low ? money(r.cost_low) + ' – ' + money(r.cost_high) : 'per person';
-    $('#costTotal').textContent = money(r.total_cost_usd || r.predicted_cost_usd_per_person * Number(state.adults));
-    $('#season').textContent = r.best_season;
-    $('#weather').textContent = r.weather;
-    $('#travelHrs').textContent = r.travel_hours + (typeof r.travel_hours === 'number' ? ' h' : '');
-    $('#descText').textContent = r.summary;
-    $('#srcNote').textContent = r.source === 'demo' ? 'Demo estimate · connect your Colab API for live AI predictions' : 'Live prediction from the Lanka Go AI model';
-
-    var hl = $('#hotelList'); hl.innerHTML = '';
-    r.hotels.forEach(function (h) {
-      var row = el('div', 'plan-hotel');
-      var left = el('div'); left.appendChild(el('b', '', h.name)); left.appendChild(el('small', '', h.location || ''));
-      row.appendChild(left);
-      if (h.price_per_night_usd != null) row.appendChild(el('span', 'hp', money(h.price_per_night_usd) + ' / night'));
-      hl.appendChild(row);
-    });
-
-    var it = $('#itin'); it.innerHTML = '';
-    r.itinerary.forEach(function (d) {
-      var li = el('li');
-      li.appendChild(el('b', '', d.day + ' · ' + d.title));
-      li.appendChild(el('p', '', d.details));
-      it.appendChild(li);
-    });
-
-    var nl = $('#notes'); nl.innerHTML = '';
-    r.notes.forEach(function (n) { nl.appendChild(el('li', '', n)); });
-  }
-
-  $('#predictBtn').addEventListener('click', function () {
-    var payload = buildPayload();
-    showSix('loading');
-    var run = API.BASE
-      ? callApi(API.PREDICT, payload).then(normalise).catch(function (e) {
-          return mockPredict(payload);
-        })
-      : new Promise(function (ok) { setTimeout(function () { ok(mockPredict(payload)); }, 1400); });
-    run.then(function (r) { renderResult(r); showSix('result'); });
-  });
-
-  $('#editBtn').addEventListener('click', function () { goTo(1); });
-
-  $('#submitBtn').addEventListener('click', function () {
-    var btn = this;
-    var quote = buildPayload();
-    quote.prediction = lastPrediction;
-    quote.created_at = new Date().toISOString();
-    try { localStorage.setItem('lankaGoLastQuote', JSON.stringify(quote)); } catch (e) {}
-    btn.disabled = true; btn.textContent = 'Sending…';
-    var save = API.BASE ? callApi(API.SAVE, quote, 20000) : Promise.resolve();
-    save.catch(function (e) {})
-      .then(function () {
-        btn.disabled = false; btn.textContent = 'Submit Quote Request';
-        showSix('done');
-        $$('#progress span').forEach(function (b) { b.className = 'done'; });
+      $('#calPrev').addEventListener('click', function () {
+        var prev = new Date(view.getFullYear(), view.getMonth() - 1, 1);
+        if (prev >= new Date(today.getFullYear(), today.getMonth(), 1)) {view = prev; renderCal();}
       });
-  });
+      $('#calNext').addEventListener('click', function () {
+        view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderCal();
+      });
 
-  goTo(1);
-})();
+      function fillSelect(id, from, to, def) {
+        var s = $('#' + id);
+        for (var i = from; i <= to; i++) {
+          var o = document.createElement('option'); o.value = i; o.textContent = i;
+          if (i === def) o.selected = true;
+          s.appendChild(o);
+        }
+      }
+      fillSelect('adults', 1, 12, 2);
+      fillSelect('children', 0, 8, 0);
+      renderCal();
 
-const countrySelect = document.getElementById('userCountry');
+      $('#budget').addEventListener('input', function (e) {
+        state.budget = Number(e.target.value);
+        $('#budgetVal').textContent = state.budget;
+      });
+      $$('input[name=tier]').forEach(function (r) {
+        r.addEventListener('change', function () {state.tier = r.value;});
+      });
 
-function updateCountryDisplay() {
-  if (!countrySelect) return;
-  const selectedOption = countrySelect.options[countrySelect.selectedIndex];
-  const shortText = selectedOption.getAttribute('data-short');
-}
+      function chipGroup(id, list) {
+        $$('#' + id + ' .plan-chip').forEach(function (c) {
+          c.addEventListener('click', function () {
+            var v = c.dataset.v, i = list.indexOf(v);
+            if (i > -1) list.splice(i, 1); else list.push(v);
+            c.classList.toggle('sel', i === -1);
+          });
+        });
+      }
+      chipGroup('stayChips', state.stays);
+      chipGroup('actChips', state.acts);
 
-if (countrySelect) {
-  countrySelect.addEventListener('change', updateCountryDisplay);
-}
+      function renderSummary() {
+        var rows = [
+          ['Planning', state.type],
+          ['Destinations', state.dests.join(', ')],
+          ['Dates', fmt(state.start) + ' – ' + fmt(state.end)],
+          ['Group', state.adults + ' adult' + (state.adults === '1' ? '' : 's') + (Number(state.children) ? ', ' + state.children + ' child' + (state.children === '1' ? '' : 'ren') : '')],
+          ['Budget', '$' + state.budget + ' · ' + state.tier],
+          ['Stay', state.stays.join(', ') || 'Any'],
+          ['Activities', state.acts.join(', ') || 'Any'],
+          ['Special Requests', state.requests || 'None']
+        ];
+        var box = $('#summary');
+        box.innerHTML = '';
+        rows.forEach(function (r) {
+          var row = document.createElement('div');
+          var b = document.createElement('b'); b.textContent = r[0];
+          var s = document.createElement('span'); s.textContent = r[1];
+          row.appendChild(b); row.appendChild(s); box.appendChild(row);
+        });
+      }
+
+      function showSix(mode) {
+        sixMode = mode;
+        $('#summaryCard').hidden = mode !== 'summary';
+        $('#loadingCard').hidden = mode !== 'loading';
+        $('#resultWrap').hidden = mode !== 'result';
+        $('#doneCard').hidden = mode !== 'done';
+        $('#stepMeta').textContent = mode === 'result' ? 'Prediction ready' : (mode === 'done' ? 'Completed' : 'Step 6 of 6');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }
+
+      function nightsBetween() {
+        return Math.max(1, Math.round((state.end - state.start) / 86400000));
+      }
+
+      function buildPayload() {
+        var ccEl = $('#userCountry');
+        var ccVal = ccEl ? ccEl.value : '';
+        return {
+          plan_type: state.type,
+          trip_style: state.style,
+          traveller_type: state.who,
+          full_name: state.name,
+          email: state.email,
+          phone: ccVal + ' ' + state.phone,
+          destinations: state.dests,
+          arrival: iso(state.start),
+          departure: iso(state.end),
+          nights: nightsBetween(),
+          adults: Number(state.adults),
+          children: Number(state.children),
+          budget_usd: state.budget,
+          budget_tier: state.tier,
+          accommodation: state.stays,
+          activities: state.acts,
+          special_requests: state.requests
+        };
+      }
+
+      function iso(d) {
+        var m = d.getMonth() + 1, day = d.getDate();
+        return d.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (day < 10 ? '0' : '') + day;
+      }
+
+      function money(n) {return '$' + Math.round(n).toLocaleString('en-US');}
+
+      function callApi(path, body, ms) {
+        var ctrl = new AbortController();
+        var timer = setTimeout(function () {ctrl.abort();}, ms || 30000);
+        return fetch(API.BASE.replace(/\/$/, '') + path, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true'},
+          body: JSON.stringify(body),
+          signal: ctrl.signal
+        }).then(function (res) {
+          clearTimeout(timer);
+          if (!res.ok) throw new Error('API error ' + res.status);
+          return res.json();
+        });
+      }
+
+      var GOOD = {
+        'Colombo': [12, 1, 2, 3], 'Galle': [12, 1, 2, 3, 4], 'Kandy': [1, 2, 3, 4, 8, 9], 'Sigiriya': [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        'Anuradhapura': [1, 2, 3, 4, 5, 6, 7, 8, 9], 'Ella': [1, 2, 3, 4, 8, 9], 'Nuwara Eliya': [2, 3, 4, 8], 'Yala': [2, 3, 4, 5, 6, 7]
+      };
+      var BLURB = {
+        'Anuradhapura': 'Explore the ancient sacred city: Ruwanwelisaya and the Sri Maha Bodhi tree.',
+        'Sigiriya': 'Climb the Lion Rock fortress and enjoy a village tour nearby.',
+        'Ella': 'Nine Arch Bridge, Little Adam’s Peak and a scenic hill-country train ride.',
+        'Nuwara Eliya': 'Tea estates, Gregory Lake and cool “Little England” air.',
+        'Colombo': 'Galle Face Green, local markets, museums and street food.',
+        'Galle': 'Walk the Galle Fort walls, relax on the beach and catch the sunset.',
+        'Kandy': 'Temple of the Tooth, the lake walk and Peradeniya Botanical Gardens.',
+        'Yala': 'Morning and evening jeep safaris for leopards and elephants.'
+      };
+
+      function mockPredict(p) {
+        var base = {'Mid-Range': 85, 'Luxury': 220, 'Boutique': 140}[p.budget_tier] || 100;
+        var pp = p.nights * base + p.destinations.length * 35 + p.activities.length * 25;
+        var total = pp * p.adults + pp * 0.6 * p.children;
+        var month = Number(p.arrival.slice(5, 7));
+        var score = p.budget_usd >= pp ? Math.min(92, 72 + (p.budget_usd / pp - 1) * 30) : 72 * (p.budget_usd / pp);
+        var notes = [], wet = [];
+        p.destinations.forEach(function (d) {if (GOOD[d] && GOOD[d].indexOf(month) === -1) wet.push(d);});
+        score -= wet.length * 6;
+        if (wet.length) notes.push('Expect showers in ' + wet.join(', ') + ' around your travel dates. Pack a light rain jacket.');
+        if (p.budget_usd < pp) notes.push('Your budget is below the estimated cost. Consider fewer nights or a Mid-Range tier.');
+        if (p.children > 0) notes.push('Travelling with children: we will prefer family rooms and shorter drives.');
+        if (p.destinations.length > 4) notes.push('Many stops in a short time means long driving days. Consider dropping one destination.');
+        var hops = Math.max(0, p.destinations.length - 1);
+        score = Math.max(20, Math.min(96, Math.round(score - hops * 1.5)));
+
+        var perDest = Math.max(1, Math.floor(p.nights / p.destinations.length)), day = 1;
+        var itin = p.destinations.map(function (d, i) {
+          var n = i === p.destinations.length - 1 ? Math.max(1, p.nights - perDest * i) : perDest;
+          var from = day; day += n;
+          return {day: n > 1 ? 'Days ' + from + '–' + (from + n - 1) : 'Day ' + from, title: d, details: BLURB[d] || 'Enjoy the best of ' + d + '.'};
+        });
+        var hotels = p.destinations.slice(0, 4).map(function (d) {
+          return {name: p.budget_tier + ' stay in ' + d, location: d, price_per_night_usd: Math.round(base * 1.4)};
+        });
+        var bestMonths = wet.length ? 'Dec – Mar' : 'Your dates';
+        return {
+          fit_score: score,
+          predicted_cost_usd_per_person: pp,
+          cost_low: pp * 0.88, cost_high: pp * 1.12,
+          total_cost_usd: total,
+          best_season: bestMonths,
+          weather: wet.length ? 'Some wet weather likely' : 'Mostly favourable',
+          travel_hours: Math.round(hops * 2.8 * 10) / 10,
+          summary: 'A ' + p.nights + '-night ' + p.plan_type.toLowerCase() + ' trip for ' + p.adults + ' adult' + (p.adults > 1 ? 's' : '') +
+            (p.children ? ' and ' + p.children + ' child' + (p.children > 1 ? 'ren' : '') : '') + ', covering ' + p.destinations.join(', ') +
+            '. Based on your ' + p.budget_tier + ' preference and a budget of ' + money(p.budget_usd) + ' per person, the estimated cost is ' + money(pp) +
+            ' per person.' + (p.activities.length ? ' Included activities: ' + p.activities.join(', ') + '.' : ''),
+          hotels: hotels,
+          itinerary: itin,
+          notes: notes.length ? notes : ['Your plan looks well balanced for the season and budget.'],
+          source: 'demo'
+        };
+      }
+
+      function normalise(d) {
+        return {
+          fit_score: Number(d.fit_score != null ? d.fit_score : d.trip_fit_score) || 0,
+          predicted_cost_usd_per_person: Number(d.predicted_cost_usd_per_person != null ? d.predicted_cost_usd_per_person : d.predicted_cost) || 0,
+          cost_low: Number(d.cost_low) || 0, cost_high: Number(d.cost_high) || 0,
+          total_cost_usd: Number(d.total_cost_usd) || 0,
+          best_season: d.best_season || '–', weather: d.weather || '',
+          travel_hours: d.travel_hours != null ? d.travel_hours : '–',
+          summary: d.summary || d.description || '',
+          hotels: d.hotels || d.recommended_hotels || [],
+          itinerary: d.itinerary || [],
+          notes: d.notes || [],
+          source: 'api'
+        };
+      }
+
+      function el(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (text != null) e.textContent = text;
+        return e;
+      }
+
+      var lastPrediction = null;
+
+      function renderResult(r) {
+        lastPrediction = r;
+        var s = Math.max(0, Math.min(100, Math.round(r.fit_score)));
+        $('#ring').style.setProperty('--p', s);
+        $('#fitScore').textContent = s;
+        $('#fitLabel').textContent = s >= 80 ? 'Excellent match' : (s >= 60 ? 'Good match' : (s >= 40 ? 'Fair match' : 'Needs adjusting'));
+        $('#fitText').textContent = s >= 60 ? 'Your plan fits the season, budget and route well.' : 'A few changes could make this trip smoother. See the notes below.';
+        $('#costPP').textContent = money(r.predicted_cost_usd_per_person);
+        $('#costRange').textContent = r.cost_low ? money(r.cost_low) + ' – ' + money(r.cost_high) : 'per person';
+        $('#costTotal').textContent = money(r.total_cost_usd || r.predicted_cost_usd_per_person * Number(state.adults));
+        $('#season').textContent = r.best_season;
+        $('#weather').textContent = r.weather;
+        $('#travelHrs').textContent = r.travel_hours + (typeof r.travel_hours === 'number' ? ' h' : '');
+        $('#descText').textContent = r.summary;
+        $('#srcNote').textContent = r.source === 'demo' ? 'Demo estimate · connect your Colab API for live AI predictions' : 'Live prediction from the Lanka Go AI model';
+
+        var hl = $('#hotelList'); hl.innerHTML = '';
+        r.hotels.forEach(function (h) {
+          var row = el('div', 'plan-hotel');
+          var left = el('div'); left.appendChild(el('b', '', h.name)); left.appendChild(el('small', '', h.location || ''));
+          row.appendChild(left);
+          if (h.price_per_night_usd != null) row.appendChild(el('span', 'hp', money(h.price_per_night_usd) + ' / night'));
+          hl.appendChild(row);
+        });
+
+        var it = $('#itin'); it.innerHTML = '';
+        r.itinerary.forEach(function (d) {
+          var li = el('li');
+          li.appendChild(el('b', '', d.day + ' · ' + d.title));
+          li.appendChild(el('p', '', d.details));
+          it.appendChild(li);
+        });
+
+        var nl = $('#notes'); nl.innerHTML = '';
+        r.notes.forEach(function (n) {nl.appendChild(el('li', '', n));});
+      }
+
+      $('#predictBtn').addEventListener('click', function () {
+        var payload = buildPayload();
+        showSix('loading');
+        var run = API.BASE
+          ? callApi(API.PREDICT, payload).then(normalise).catch(function (e) {
+            return mockPredict(payload);
+          })
+          : new Promise(function (ok) {setTimeout(function () {ok(mockPredict(payload));}, 1400);});
+        run.then(function (r) {renderResult(r); showSix('result');});
+      });
+
+      $('#editBtn').addEventListener('click', function () {goTo(1);});
+
+      $('#submitBtn').addEventListener('click', function () {
+        var btn = this;
+        var quote = buildPayload();
+        quote.prediction = lastPrediction;
+        quote.created_at = new Date().toISOString();
+        try {localStorage.setItem('lankaGoLastQuote', JSON.stringify(quote));} catch (e) { }
+        btn.disabled = true; btn.textContent = 'Sending…';
+        var save = API.BASE ? callApi(API.SAVE, quote, 20000) : Promise.resolve();
+        save.catch(function (e) { })
+          .then(function () {
+            btn.disabled = false; btn.textContent = 'Submit Quote Request';
+            showSix('done');
+            $$('#progress span').forEach(function (b) {b.className = 'done';});
+          });
+      });
+
+      goTo(1);
+    })();
+
+    const countrySelect = document.getElementById('userCountry');
+
+    function updateCountryDisplay() {
+      if (!countrySelect) return;
+      const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+      const shortText = selectedOption.getAttribute('data-short');
+    }
+
+    if (countrySelect) {
+      countrySelect.addEventListener('change', updateCountryDisplay);
+    }
   </script>
 </body>
 
