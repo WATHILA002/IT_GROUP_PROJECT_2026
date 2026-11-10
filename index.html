@@ -12,7 +12,8 @@
 <body>
   <div class="app" id="appFrame">
     <div class="sys-utility-bar">
-      <div class="sys-alert"><i class="fa-solid fa-moon"></i> <span data-i18n="poya_alert"><b>Poya Holiday Alert: Nov 15</b></span></div>
+      <div class="sys-alert"><i class="fa-solid fa-moon"></i> <span data-i18n="poya_alert"><b>Poya Holiday Alert: Nov
+            15</b></span></div>
       <div class="sys-utility-controls">
         <label class="sys-select">
           <i class="fa-solid fa-globe"></i>
@@ -25,7 +26,44 @@
         <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()" aria-label="Currency">LKR</button>
         <button class="sys-btn sys-theme-btn" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
           <i class="fa-solid fa-sun"></i><i class="fa-solid fa-moon"></i>
+          <button class="sys-btn sys-theme-btn" onclick="toggleMenu()" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </button>
+
+        <!-- Slide-out Drawer Navigation Menu -->
+        <div id="navDrawer" class="nav-drawer">
+          <div class="drawer-header">
+            <div class="footer-logo" style="margin-bottom:0;">
+              <i class="fa-solid fa-umbrella-beach logo-icon-gold" style="font-size:24px;"></i>
+              <div class="logo-text">
+                <h2>LANKA STAY</h2>
+              </div>
+            </div>
+            <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu"><i
+                class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div class="drawer-content">
+            <span class="drawer-section-title">EXPLORE</span>
+            <a href="index.html" class="drawer-link active">Home</a>
+            <a href="hotel.html" class="drawer-link">Packages</a>
+            <a href="explore.html" class="drawer-link">Tours</a>
+            <a href="planner.html" class="drawer-link">Itineraries</a>
+            <a href="explore.html" class="drawer-link">Destinations</a>
+            <a href="explore.html" class="drawer-link">Day Tours</a>
+            <a href="explore.html" class="drawer-link">MICE</a>
+
+            <span class="drawer-section-title">MORE</span>
+            <a href="index.html" class="drawer-link">Why Us</a>
+            <a href="index.html" class="drawer-link">Blog</a>
+            <a href="index.html" class="drawer-link">Testimonials</a>
+            <a href="profile.html" class="drawer-link">Profile &amp; Settings</a>
+          </div>
+        </div>
+
+        <!-- Background Dark Overlay -->
+        <div id="drawerOverlay" class="drawer-overlay" onclick="toggleMenu()"></div>
       </div>
     </div>
 
@@ -37,29 +75,31 @@
           <div class="brand">
             <h1>Lanka <span>Stay</span></h1>
             <small>Season-Aware Hotel &amp; Trip Planner</small>
-          </div>
-          <a href="profile.html" class="icon-btn"><i class="fa-regular fa-bell"></i></a>
-          <a href="profile.html" class="icon-btn"><i class="fa-solid fa-user"></i></a>
-        </div>
 
-        <p class="kicker">SRI LANKA</p>
-        <h2 data-i18n="hero_title">Explore Sri Lanka with <span>Lanka Stay</span></h2>
-        <p data-i18n="hero_sub">Your island journey, all in one place.</p>
 
-        <form class="search-pill" action="explore.html">
-          <i class="fa-solid fa-location-dot"></i>
-          <input type="text" name="q" placeholder="Where do you want to go?" data-i18n="search_placeholder">
-          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
+            <p class="kicker">SRI LANKA</p>
+            <h2 data-i18n="hero_title">Explore Sri Lanka with <span>Lanka Stay</span></h2>
+            <p data-i18n="hero_sub">Your island journey, all in one place.</p>
+
+            <form class="search-pill" action="explore.html">
+              <i class="fa-solid fa-location-dot"></i>
+              <input type="text" name="q" placeholder="Where do you want to go?" data-i18n="search_placeholder">
+              <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
       </section>
 
       <section class="content">
         <div class="categories">
-          <a href="hotel.html"><span class="box green"><i class="fa-solid fa-bed"></i></span><span data-i18n="hotels">Hotels</span></a>
-          <a href="https://pickme.lk/services/ride/"><span class="box blue"><i class="fa-solid fa-bus"></i></span></span><span data-i18n="transport">Transport</span></a>
-          <a href="explore.html"><span class="box orange"><i class="fa-solid fa-utensils"></i></span></span><span data-i18n="foods">Foods</span></a>
-          <a href="explore.html"><span class="box purple"><i class="fa-solid fa-camera"></i></span></span><span data-i18n="attraction">Attraction</span></a>
-          <a href="planner.html"><span class="box leaf"><i class="fa-solid fa-route"></i></span><span data-i18n="planner">Planner</span></a>
+          <a href="hotel.html"><span class="box green"><i class="fa-solid fa-bed"></i></span><span
+              data-i18n="hotels">Hotels</span></a>
+          <a href="https://pickme.lk/services/ride/"><span class="box blue"><i
+                class="fa-solid fa-bus"></i></span></span><span data-i18n="transport">Transport</span></a>
+          <a href="explore.html"><span class="box orange"><i class="fa-solid fa-utensils"></i></span></span><span
+              data-i18n="foods">Foods</span></a>
+          <a href="explore.html"><span class="box purple"><i class="fa-solid fa-camera"></i></span></span><span
+              data-i18n="attraction">Attraction</span></a>
+          <a href="planner.html"><span class="box leaf"><i class="fa-solid fa-route"></i></span><span
+              data-i18n="planner">Planner</span></a>
         </div>
         <br>
 
@@ -164,44 +204,34 @@
         <!-- 3D Carousel Track -->
         <div class="carousel-track">
           <div class="card" data-index="0" data-name="" data-role="">
-            <img src=".//images/bg1.jpeg"
-              alt="Member 1">
+            <img src=".//images/bg1.jpeg" alt="Member 1">
           </div>
           <div class="card" data-index="1" data-name="" data-role="">
-            <img src=".//images/bg2.jpeg"
-              alt="Member 2">
+            <img src=".//images/bg2.jpeg" alt="Member 2">
           </div>
           <div class="card" data-index="2" data-name="" data-role="">
-            <img src=".//images/bg3.jpeg"
-              alt="Member 3">
+            <img src=".//images/bg3.jpeg" alt="Member 3">
           </div>
           <div class="card" data-index="2" data-name="" data-role="">
-            <img src=".//images/bg4.jpeg"
-              alt="Member 3">
+            <img src=".//images/bg4.jpeg" alt="Member 3">
           </div>
           <div class="card" data-index="2" data-name="" data-role="">
-            <img src=".//images/bg5.jpeg"
-              alt="Member 3">
+            <img src=".//images/bg5.jpeg" alt="Member 3">
           </div>
           <div class="card" data-index="3" data-name="" data-role="">
-            <img src=".//images/bg6.jpeg"
-              alt="Member 4">
+            <img src=".//images/bg6.jpeg" alt="Member 4">
           </div>
           <div class="card" data-index="4" data-name="" data-role="">
-            <img src=".//images/bg7.jpeg"
-              alt="Member 5">
+            <img src=".//images/bg7.jpeg" alt="Member 5">
           </div>
           <div class="card" data-index="2" data-name="" data-role="">
-            <img src=".//images/bg8.jpeg"
-              alt="Member 3">
+            <img src=".//images/bg8.jpeg" alt="Member 3">
           </div>
           <div class="card" data-index="2" data-name="" data-role="">
-            <img src=".//images/bg9.jpeg"
-              alt="Member 3">
+            <img src=".//images/bg9.jpeg" alt="Member 3">
           </div>
           <div class="card" data-index="5" data-name="" data-role="">
-            <img src=".//images/bg10.jpeg"
-              alt="Member 6">
+            <img src=".//images/bg10.jpeg" alt="Member 6">
           </div>
         </div>
 
@@ -221,23 +251,23 @@
       <section class="dest-header-section">
         <!-- Top Intro Box -->
         <div class="dest-intro-box">
-        <h2 class="dest-main-title">
-        <span data-i18n="discover_the_beauty_of" style="color: #000000;">Discover The Beauty Of</span><br>
-        <span data-i18n="sri_lanka" style="color: #D4AF37;">Sri Lanka</span>
-        </h2>
+          <h2 class="dest-main-title">
+            <span data-i18n="discover_the_beauty_of" style="color: #000000;">Discover The Beauty Of</span><br>
+            <span data-i18n="sri_lanka" style="color: #D4AF37;">Sri Lanka</span>
+          </h2>
           <p class="dest-main-desc"><span data-i18n="discover_paragraph">
-            Explore a land of breathtaking landscapes, golden beaches, ancient wonders, and unforgettable adventures.
-            From misty mountains to topical coastlines, every destination tells a beautiful story.
-          </span></p>
+              Explore a land of breathtaking landscapes, golden beaches, ancient wonders, and unforgettable adventures.
+              From misty mountains to topical coastlines, every destination tells a beautiful story.
+            </span></p>
         </div>
 
         <!-- Featured Destination Card -->
         <article class="dest-detail-card">
           <h1 class="dest-name"><span data-i18n="journey_he">Journey Throught Paradise></span></h1>
           <p class="dest-bio"><span data-i18n="journey_para">
-            Discover Sri Lanaka's most beautiful destinations, from peaceful beaches and green mountains to historical
-            cities and hidden natural wonders. Every journey brings a new experince.....
-          </span></p>
+              Discover Sri Lanaka's most beautiful destinations, from peaceful beaches and green mountains to historical
+              cities and hidden natural wonders. Every journey brings a new experince.....
+            </span></p>
 
           <!-- Meta Information Badges -->
           <div class="dest-meta-list">
@@ -250,59 +280,59 @@
               </div>
             </div>
 
-          <div class="dest-meta-list">
-            <div class="dest-meta-item">
-              <div class="meta-icon-btn">
-                <i class="fas fa-route"></i>
+            <div class="dest-meta-list">
+              <div class="dest-meta-item">
+                <div class="meta-icon-btn">
+                  <i class="fas fa-route"></i>
+                </div>
+                <div class="meta-text">
+                  <span><span data-i18n="dest2">Your Perfect Journey</span></span>
+                </div>
               </div>
-              <div class="meta-text">
-                <span><span data-i18n="dest2">Your Perfect Journey</span></span>
-              </div>
-            </div>
 
-          <div class="dest-meta-list">
-            <div class="dest-meta-item">
-              <div class="meta-icon-btn">
-                <i class="fas fa-car"></i>
-              </div>
-              <div class="meta-text">
-                <span><span data-i18n="dest3">Transportation</span></span>
-              </div>
-            </div>
+              <div class="dest-meta-list">
+                <div class="dest-meta-item">
+                  <div class="meta-icon-btn">
+                    <i class="fas fa-car"></i>
+                  </div>
+                  <div class="meta-text">
+                    <span><span data-i18n="dest3">Transportation</span></span>
+                  </div>
+                </div>
 
-          <div class="dest-meta-list">
-            <div class="dest-meta-item">
-              <div class="meta-icon-btn">
-                <i class="fas fa-mountain"></i>
-              </div>
-              <div class="meta-text">
-                <span><span data-i18n="dest4">Nature & Wildlife</span></span>
-              </div>
-            </div>
+                <div class="dest-meta-list">
+                  <div class="dest-meta-item">
+                    <div class="meta-icon-btn">
+                      <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="meta-text">
+                      <span><span data-i18n="dest4">Nature & Wildlife</span></span>
+                    </div>
+                  </div>
 
-          <div class="dest-meta-list">
-            <div class="dest-meta-item">
-              <div class="meta-icon-btn">
-                <i class="fas fa-landmark"></i>
-              </div>
-              <div class="meta-text">
-                <span><span data-i18n="dest5">Historical Places</span></span>
-              </div>
-            </div>
+                  <div class="dest-meta-list">
+                    <div class="dest-meta-item">
+                      <div class="meta-icon-btn">
+                        <i class="fas fa-landmark"></i>
+                      </div>
+                      <div class="meta-text">
+                        <span><span data-i18n="dest5">Historical Places</span></span>
+                      </div>
+                    </div>
 
-            <div class="dest-meta-item">
-              <div class="meta-icon-btn">
-                <i class="fas fa-utensils"></i>
-              </div>
-              <div class="meta-text">
-                <span><span data-i18n="dest6">Sri Lanka Foods</span></span>
-              </div>
-            </div>
-          </div>
-          <br>
-          <button class="ai-action-btn" onclick="location.href='explore.html'">
-            <i class="fa-solid fa-location-dot"></i><span data-i18n="dest_btn">Explore Destination</span>
-          </button>
+                    <div class="dest-meta-item">
+                      <div class="meta-icon-btn">
+                        <i class="fas fa-utensils"></i>
+                      </div>
+                      <div class="meta-text">
+                        <span><span data-i18n="dest6">Sri Lanka Foods</span></span>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <button class="ai-action-btn" onclick="location.href='explore.html'">
+                    <i class="fa-solid fa-location-dot"></i><span data-i18n="dest_btn">Explore Destination</span>
+                  </button>
         </article>
       </section>
 
@@ -319,10 +349,10 @@
             <h2 class="elephant-title"><span data-i18n="ele_t2">Save Sri Lanka's Gentle Giants</span></h2>
 
             <p class="elephant-desc"><span data-i18n="ele_t3">
-              Sri Lanka is home to the Asian elephant subspecies (<i>Elephas maximus maximus</i>). Human-elephant
-              conflict and habitat loss severely threaten their survival. Join conservation efforts, support ethical
-              elephant sanctuaries, and protect their natural migratory corridors.
-            </span></p>
+                Sri Lanka is home to the Asian elephant subspecies (<i>Elephas maximus maximus</i>). Human-elephant
+                conflict and habitat loss severely threaten their survival. Join conservation efforts, support ethical
+                elephant sanctuaries, and protect their natural migratory corridors.
+              </span></p>
 
             <!-- Meta Features & CTA Button -->
             <div class="elephant-footer">
@@ -352,9 +382,9 @@
             </div>
             <h3 class="feature-title"><span data-i18n="ban1">Customer First</span></h3>
             <p class="feature-desc"><span data-i18n="band1">
-              Our travelers are at the heart of everything we do. Every journey is designed around your comfort,
-              satisfaction, and happiness.
-            </span></p>
+                Our travelers are at the heart of everything we do. Every journey is designed around your comfort,
+                satisfaction, and happiness.
+              </span></p>
           </article>
 
           <!-- Card 2: Authenticity -->
@@ -364,9 +394,9 @@
             </div>
             <h3 class="feature-title"><span data-i18n="ban2">Authenticity</span></h3>
             <p class="feature-desc"><span data-i18n="band2">
-              We share the real essence of Sri Lanka — its people, culture, and landscapes — offering experiences that
-              are genuine and meaningful.
-            </span></p>
+                We share the real essence of Sri Lanka — its people, culture, and landscapes — offering experiences that
+                are genuine and meaningful.
+              </span></p>
           </article>
 
           <!-- Card 3: Reliability & Accuracy -->
@@ -376,9 +406,9 @@
             </div>
             <h3 class="feature-title"><span data-i18n="ban3">Reliability</span></h3>
             <p class="feature-desc"><span data-i18n="band3">
-              We provide precise travel insights, real-time monsoon advisories, and accurate hotel rates to ensure a
-              seamless trip experience.
-            </span></p>
+                We provide precise travel insights, real-time monsoon advisories, and accurate hotel rates to ensure a
+                seamless trip experience.
+              </span></p>
           </article>
 
         </div>
@@ -389,9 +419,9 @@
         <div class="video-text">
           <h3 class="video-title"><span data-i18n="vidt">Discover Sri Lanka</span></h3>
           <p class="video-desc"><span data-i18n="vidb">
-            Sri Lanka is a tropical island with golden beaches, misty tea hills,
-            ancient temples and wild safaris, all within a few hours of each other.
-          </span></p>
+              Sri Lanka is a tropical island with golden beaches, misty tea hills,
+              ancient temples and wild safaris, all within a few hours of each other.
+            </span></p>
         </div>
         <div class="video-card">
           <video autoplay muted loop playsinline preload="auto" poster=".//images/mainvideo.mp4">
@@ -403,7 +433,7 @@
       <br>
 
       <!-- Mobile App Comprehensive Footer -->
-       <footer class="app-footer">
+      <footer class="app-footer">
 
         <div class="fotter-brand-section">
           <div class="footer-logo">
@@ -414,12 +444,17 @@
             </div>
           </div>
           <p class="footer-about-text">
-            <strong>LANKA Stay</strong><span data-i18n="fd1"> - operated by LankaGo (Pvt) Ltd and incorporated under companies Act No. 7 0f 2026 (company Registration no. PV00345889) - is your trusted Sri Lanka travel partner, dedicated to craftingtailor-made journeys, authenticexperiences, culturalimmersion, and exceptional comfort.
-          </span></p>
+            <strong>LANKA Stay</strong><span data-i18n="fd1"> - operated by LankaGo (Pvt) Ltd and incorporated under
+              companies Act No. 7 0f 2026 (company Registration no. PV00345889) - is your trusted Sri Lanka travel
+              partner, dedicated to craftingtailor-made journeys, authenticexperiences, culturalimmersion, and
+              exceptional comfort.
+            </span>
+          </p>
 
           <p class="footer-about-text"><span data-i18n="fd2">
-            We bring your travel dreams to life through expertly curated itineraries, genuine local insights, and personalized service every step of the way - <em>Because your journey our care.</em>
-          </span></p>
+              We bring your travel dreams to life through expertly curated itineraries, genuine local insights, and
+              personalized service every step of the way - <em>Because your journey our care.</em>
+            </span></p>
 
           <div class="footer-social-icons">
             <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -549,21 +584,14 @@
           </div>
         </div>
 
-       </footer>
+      </footer>
+
     </main>
 
-
-    <nav class="bottom-nav">
-      <a href="index.html" class="active"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
-      <a href="explore.html"><i class="fa-solid fa-compass"></i><span data-i18n="explore">Explore</span></a>
-      <a href="hotel.html"><i class="fa-solid fa-hotel"></i><span data-i18n="hotels">Hotels</span></a>
-      <a href="planner.html"><i class="fa-solid fa-route"></i><span data-i18n="planner">Planner</span></a>
-      <a href="profile.html"><i class="fa-regular fa-user"></i><span data-i18n="profile">Profile</span></a>
-    </nav>
   </div>
   <script src="translations.js"></script>
   <script src="app.js"></script>
-  <script>window.EBOT = {container: "main", bottomOffset: 70 };</script>
+  <script>window.EBOT = {container: "main", bottomOffset: 70};</script>
   <script src="knowledge.js"></script>
   <script src="elephant-bot.js"></script>
 </body>
