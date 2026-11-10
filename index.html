@@ -584,64 +584,64 @@
           <div class="icf-ticker-track" id="icfTickerTrack">
             <!-- Airline Item 1 -->
             <div class="icf-airline-item">
-              <span class="icf-airline-code">BA</span>
+              <span class="icf-airline-code">PM</span>
               <div class="icf-airline-info">
-                <span class="icf-airline-name">British Airways</span>
-                <span class="icf-airline-hub">London (LHR)</span>
+                <span class="icf-airline-name">PICK ME</span>
+                <span class="icf-airline-hub">Sri Lanka(LK)</span>
               </div>
             </div>
             <!-- Airline Item 2 -->
             <div class="icf-airline-item">
-              <span class="icf-airline-code">CX</span>
+              <span class="icf-airline-code">U</span>
               <div class="icf-airline-info">
-                <span class="icf-airline-name">Cathay Pacific</span>
-                <span class="icf-airline-hub">Hong Kong (HKG)</span>
+                <span class="icf-airline-name">UBER EATS</span>
+                <span class="icf-airline-hub">Sri Lanka(LK)</span>
               </div>
             </div>
             <!-- Airline Item 3 -->
             <div class="icf-airline-item">
-              <span class="icf-airline-code">MU</span>
+              <span class="icf-airline-code">DA</span>
               <div class="icf-airline-info">
-                <span class="icf-airline-name">China Eastern</span>
-                <span class="icf-airline-hub">Shanghai (PVG)</span>
+                <span class="icf-airline-name">Dialog Axiata</span>
+                <span class="icf-airline-hub">Sri Lanka(LK)</span>
               </div>
             </div>
             <!-- Airline Item 4 -->
             <div class="icf-airline-item">
-              <span class="icf-airline-code">SQ</span>
+              <span class="icf-airline-code">CG</span>
               <div class="icf-airline-info">
-                <span class="icf-airline-name">Singapore Airlines</span>
-                <span class="icf-airline-hub">Changi (SIN)</span>
+                <span class="icf-airline-name">Cinnamon Grand</span>
+                <span class="icf-airline-hub">Sri Lanka(Lk)</span>
               </div>
             </div>
             <!-- Airline Item 5 -->
             <div class="icf-airline-item">
-              <span class="icf-airline-code">EK</span>
+              <span class="icf-airline-code">DT</span>
               <div class="icf-airline-info">
-                <span class="icf-airline-name">Emirates</span>
-                <span class="icf-airline-hub">Dubai (DXB)</span>
+                <span class="icf-airline-name">Dilmah Tea</span>
+                <span class="icf-airline-hub">Sri Lanka(LK)</span>
               </div>
             </div>
             <!-- Duplicate items for smooth infinite loop -->
             <div class="icf-airline-item">
-              <span class="icf-airline-code">BA</span>
+              <span class="icf-airline-code">PS</span>
               <div class="icf-airline-info">
-                <span class="icf-airline-name">British Airways</span>
-                <span class="icf-airline-hub">London (LHR)</span>
+                <span class="icf-airline-name">Plam Stay</span>
+                <span class="icf-airline-hub">Sri Lanka(LK)</span>
               </div>
             </div>
             <div class="icf-airline-item">
-              <span class="icf-airline-code">CX</span>
+              <span class="icf-airline-code">UC</span>
               <div class="icf-airline-info">
-                <span class="icf-airline-name">Cathay Pacific</span>
-                <span class="icf-airline-hub">Hong Kong (HKG)</span>
+                <span class="icf-airline-name">Urban Cab</span>
+                <span class="icf-airline-hub">Sri Lanka(LK)</span>
               </div>
             </div>
             <div class="icf-airline-item">
-              <span class="icf-airline-code">MU</span>
+              <span class="icf-airline-code">B</span>
               <div class="icf-airline-info">
-                <span class="icf-airline-name">China Eastern</span>
-                <span class="icf-airline-hub">Shanghai (PVG)</span>
+                <span class="icf-airline-name">Booking.Com</span>
+                <span class="icf-airline-hub">UK</span>
               </div>
             </div>
           </div>
@@ -811,59 +811,93 @@
   <script src="knowledge.js"></script>
   <script src="elephant-bot.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const track = document.getElementById('icfCardsTrack');
-      const prevBtn = document.getElementById('icfPrevBtn');
-      const nextBtn = document.getElementById('icfNextBtn');
+    document.addEventListener('DOMContentLoaded', () => { 
+    const track = document.getElementById('icfCardsTrack');
+    const prevBtn = document.getElementById('icfPrevBtn');
+    const nextBtn = document.getElementById('icfNextBtn');
+    const sliderWrapper = document.querySelector('.icf-slider-wrapper');
+    
+    if (!track || !prevBtn || !nextBtn) return;
 
-      if (!track || !prevBtn || !nextBtn) return;
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    const autoPlayInterval = 3000; // Time in milliseconds (3000ms = 3 seconds)
 
-      let currentIndex = 0;
-
-      function getCardsPerView() {
+    function getCardsPerView() {
         if (window.innerWidth <= 480) return 1;
         if (window.innerWidth <= 768) return 2;
         return 3;
-      }
+    }
 
-      function updateSlider() {
+    function updateSlider() {
         const cardWidth = track.querySelector('.icf-destination-card').offsetWidth;
         const gap = 14;
         const maxIndex = Math.max(0, track.children.length - getCardsPerView());
-
+        
         if (currentIndex > maxIndex) {
-          currentIndex = maxIndex;
+            currentIndex = maxIndex;
         }
 
         const moveAmount = currentIndex * (cardWidth + gap);
         track.style.transform = `translateX(-${moveAmount}px)`;
-      }
+    }
 
-      nextBtn.addEventListener('click', () => {
+    function moveToNextSlide() {
         const maxIndex = track.children.length - getCardsPerView();
         if (currentIndex < maxIndex) {
-          currentIndex++;
-          updateSlider();
+            currentIndex++;
         } else {
-          currentIndex = 0;
-          updateSlider();
+            currentIndex = 0; // Loop back to the beginning
         }
-      });
-
-      prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateSlider();
-        } else {
-          currentIndex = Math.max(0, track.children.length - getCardsPerView());
-          updateSlider();
-        }
-      });
-
-      window.addEventListener('resize', () => {
         updateSlider();
-      });
+    }
+
+    function moveToPrevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = Math.max(0, track.children.length - getCardsPerView());
+        }
+        updateSlider();
+    }
+
+    // Start auto sliding
+    function startAutoPlay() {
+        autoPlayTimer = setInterval(moveToNextSlide, autoPlayInterval);
+    }
+
+    // Stop auto sliding (when user hovers mouse over it)
+    function stopAutoPlay() {
+        clearInterval(autoPlayTimer);
+    }
+
+    // Event Listeners for Buttons
+    nextBtn.addEventListener('click', () => {
+        moveToNextSlide();
+        stopAutoPlay();
+        startAutoPlay(); // Reset timer on manual click
     });
+
+    prevBtn.addEventListener('click', () => {
+        moveToPrevSlide();
+        stopAutoPlay();
+        startAutoPlay(); // Reset timer on manual click
+    });
+
+    // Pause auto-play on mouse hover
+    if (sliderWrapper) {
+        sliderWrapper.addEventListener('mouseenter', stopAutoPlay);
+        sliderWrapper.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    // Handle Window Resize Responsiveness
+    window.addEventListener('resize', () => {
+        updateSlider();
+    });
+
+    // Initialize Auto-play
+    startAutoPlay();
+});
   </script>
 </body>
 
