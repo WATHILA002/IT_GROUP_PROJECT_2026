@@ -370,3 +370,12 @@
   setVis("fall");
   requestAnimationFrame(function (t) { last = t; requestAnimationFrame(frame); });
 })();
+
+/* nav bar */
+function toggleMenu() {
+  const drawer = document.getElementById('navDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  
+  drawer.classList.toggle('open');
+  overlay.classList.toggle('open');
+}
