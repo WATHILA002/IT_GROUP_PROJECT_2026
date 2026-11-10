@@ -4694,10 +4694,6 @@ body.dark-mode,
   /* Expands smoothly */
 }
 
-
-/* ========================================== */
-/* DARK MODE OVERRIDES FOR FAQ SECTION        */
-/* ========================================== */
 .app.dark-mode .faq-section {
   background-color: #121c17 !important;
   color: #e2f1ea !important;
@@ -4726,7 +4722,6 @@ body.dark-mode,
   /* Green/Mint accent in dark mode */
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .icf-wrapper {
   font-family: 'Inter', sans-serif;
@@ -4848,7 +4843,7 @@ body.dark-mode,
 
 .icf-destination-card {
   position: relative;
-  min-width: 180px;
+  min-width: 130px;
   flex: 0 0 calc(33.333% - 10px);
   height: 220px;
   border-radius: 12px;
@@ -4897,9 +4892,9 @@ body.dark-mode,
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: white;
-  color: #374151;
-  border: 1px solid #e2e8f0;
+  background-color: #f44336;
+  color: white;
+  border: 1px solid #f44336;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
@@ -4911,8 +4906,9 @@ body.dark-mode,
 }
 
 .icf-slider-btn:hover {
-  background-color: #f1f5f9;
-  color: #2563eb;
+  background-color: grey;
+  color: white;
+  border-color: grey;
 }
 
 .icf-prev-btn {
