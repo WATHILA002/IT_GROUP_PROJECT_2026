@@ -12,7 +12,8 @@
 <body>
   <div class="app" id="appFrame">
     <div class="sys-utility-bar">
-      <div class="sys-alert"><i class="fa-solid fa-umbrella-beach"></i> <span data-i18n="poya_alert"><b>LankaStay</b></span></div>
+      <div class="sys-alert"><i class="fa-solid fa-umbrella"></i> <span data-i18n="poya_alert"><b>LankaStay</b></span>
+      </div>
       <div class="sys-utility-controls">
         <label class="sys-select">
           <i class="fa-solid fa-globe"></i>
@@ -36,7 +37,7 @@
             <div class="footer-logo" style="margin-bottom:0;">
               <i class="fa-solid fa-umbrella-beach logo-icon-gold" style="font-size:24px;"></i>
               <div class="logo-text">
-                <h2>LANKA STAY</h2>
+                <h2 class="color123">LANKA STAY</h2>
               </div>
             </div>
             <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu"><i
@@ -46,11 +47,11 @@
           <div class="drawer-content">
             <span class="drawer-section-title">EXPLORE</span>
             <a href="index.html" class="drawer-link active">Home</a>
-            <a href="hotel.html" class="drawer-link">Packages</a>
-            <a href="explore.html" class="drawer-link">Tours</a>
-            <a href="planner.html" class="drawer-link">Itineraries</a>
+            <a href="hotel.html" class="drawer-link">Hotel Packages</a>
+            <a href="explore.html" class="drawer-link">Explore</a>
+            <a href="planner.html" class="drawer-link">Trip Planner</a>
             <a href="explore.html" class="drawer-link">Destinations</a>
-            <a href="explore.html" class="drawer-link">Day Tours</a>
+            <a href="planner.html" class="drawer-link">Day Tours</a>
             <a href="profile.html" class="drawer-link">Profile</a>
 
             <span class="drawer-section-title">MORE</span>
@@ -95,8 +96,8 @@
                 class="fa-solid fa-bus"></i></span></span><span data-i18n="transport">Transport</span></a>
           <a href="explore.html"><span class="box orange"><i class="fa-solid fa-utensils"></i></span></span><span
               data-i18n="foods">Foods</span></a>
-          <a href="explore.html"><span class="box purple"><i class="fa-solid fa-camera"></i></span></span><span
-              data-i18n="attraction">Attraction</span></a>
+          <a href="explore.html"><span class="box purple"><i class="fas fa-map"></i></span></span><span
+              data-i18n="attraction">Map</span></a>
           <a href="planner.html"><span class="box leaf"><i class="fa-solid fa-route"></i></span><span
               data-i18n="planner">Planner</span></a>
         </div>
@@ -160,18 +161,80 @@
         <br>
         <br>
 
-        <div class="weather-section">
-          <div class="weather-widget">
-            <div class="weather-icon">
-              <i class="fa-solid fa-cloud-sun"></i>
+        <br>
+        <br>
+        <br>
+        <div class="weather-compact-card">
+          <!-- Left Side: Live Weather -->
+          <div class="weather-col left">
+            <i id="weather-main-icon" class="fa-solid fa-cloud-sun weather-mini-icon"></i>
+            <div>
+              <h4 data-i18n="weather_title">Sri Lanka Weather</h4>
+              <div class="temp-row">
+                <span id="current-temp">--°C</span>
+                <span id="weather-desc">Loading...</span>
+              </div>
             </div>
-            <div class="weather-info">
-              <h3 data-i18n="weather_title">Live Sri Lanka Weather</h3>
-              <p id="current-temp">29°C</p>
-              <span id="weather-desc">South-West Season Active</span>
+          </div>
+
+          <!-- Divider -->
+          <div class="weather-divider"></div>
+
+          <!-- Right Side: Future 2 Days & Button -->
+          <div class="weather-col right">
+            <div class="forecast-pills">
+              <span class="pill" id="pill-day-1">Tomorrow: <strong>--°C / --°C</strong></span>
+              <span class="pill" id="pill-day-2">In 2 Days: <strong>--°C / --°C</strong></span>
+            </div>
+            <button class="show-more-mini-btn" id="showMoreBtn">Show More <i class="fa-solid fa-arrow-right"
+                style="font-size: 0.65rem; margin-left: 2px;"></i></button>
+          </div>
+        </div>
+
+        <!-- Extended View Modal (Cards & Graphs Pop-up) -->
+        <div class="weather-modal" id="weatherModal">
+          <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2>Extended Forecast & Analytics</h2>
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: -10px;">Detailed 48-hour outlook and temperature
+              graph.</p>
+
+            <div class="forecast-mini-list" id="modal-forecast-list" style="margin-top: 20px;">
+              <div class="forecast-mini-item">
+                <span id="modal-day-1-name">Tomorrow</span>
+                <span id="modal-day-1-val">Loading...</span>
+              </div>
+              <div class="forecast-mini-item">
+                <span id="modal-day-2-name">In 2 Days</span>
+                <span id="modal-day-2-val">Loading...</span>
+              </div>
+            </div>
+
+            <!-- Graph Section -->
+            <div class="chart-container">
+              <div class="chart-title">Temperature Trend (°C)</div>
+              <div class="bar-graph">
+                <div class="bar-col">
+                  <span id="graph-val-0" style="font-size: 0.7rem; margin-bottom: 4px;">--°</span>
+                  <div class="bar" id="bar-0" style="height: 50%;"></div>
+                  <span class="bar-label">Today</span>
+                </div>
+                <div class="bar-col">
+                  <span id="graph-val-1" style="font-size: 0.7rem; margin-bottom: 4px;">--°</span>
+                  <div class="bar" id="bar-1" style="height: 50%;"></div>
+                  <span class="bar-label" id="label-day-1">Wed</span>
+                </div>
+                <div class="bar-col">
+                  <span id="graph-val-2" style="font-size: 0.7rem; margin-bottom: 4px;">--°</span>
+                  <div class="bar" id="bar-2" style="height: 50%;"></div>
+                  <span class="bar-label" id="label-day-2">Thu</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <br>
+        <br>
         <br>
 
         <section class="ai-fullwidth-banner">
@@ -506,7 +569,6 @@
       </section>
       <br>
       <br>
-
 
       <!-- Mobile App Comprehensive Footer -->
       <footer class="app-footer">
