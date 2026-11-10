@@ -79,15 +79,15 @@
         </div>
 
 
-            <p class="kicker">SRI LANKA</p>
-            <h2 data-i18n="hero_title">Explore Sri Lanka with <span>Lanka Stay</span></h2>
-            <p data-i18n="hero_sub">Your island journey, all in one place.</p>
+        <p class="kicker">SRI LANKA</p>
+        <h2 data-i18n="hero_title">Explore Sri Lanka with <span>Lanka Stay</span></h2>
+        <p data-i18n="hero_sub">Your island journey, all in one place.</p>
 
-            <form class="search-pill" action="explore.html">
-              <i class="fa-solid fa-location-dot"></i>
-              <input type="text" name="q" placeholder="Where do you want to go?" data-i18n="search_placeholder">
-              <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
+        <form class="search-pill" action="explore.html">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" name="q" placeholder="Where do you want to go?" data-i18n="search_placeholder">
+          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
       </section>
 
       <section class="content">
@@ -106,7 +106,7 @@
         <br>
 
 
-                <br>
+        <br>
         <div class="weather-compact-card">
           <!-- Left Side: Live Weather -->
           <div class="weather-col left">
@@ -576,6 +576,49 @@
       </section>
 
 
+      <div class="afk-blog-section">
+        <h2 class="afk-section-title">Blogs</h2>
+
+        <div class="afk-blog-container">
+          <!-- Card 1: Mountain Sounds -->
+          <div class="afk-blog-card"
+            style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80');">
+            <div class="afk-blog-content">
+              <div>
+                <h3 class="afk-blog-title">Mountain Sounds</h3>
+                <p class="afk-blog-date">January 22, 15:45</p>
+              </div>
+              <a href="#read" class="afk-read-btn">Read More</a>
+            </div>
+          </div>
+
+          <!-- Card 2: The Bahamas -->
+          <div class="afk-blog-card"
+            style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80');">
+            <div class="afk-blog-content">
+              <div>
+                <h3 class="afk-blog-title">The Bahamas</h3>
+                <p class="afk-blog-date">January 25, 10:00</p>
+              </div>
+              <a href="#read" class="afk-read-btn">Read More</a>
+            </div>
+          </div>
+
+          <!-- Card 3: Switzerland -->
+          <div class="afk-blog-card"
+            style="background-image: url('https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=800&q=80');">
+            <div class="afk-blog-content">
+              <div>
+                <h3 class="afk-blog-title">Switzerland</h3>
+                <p class="afk-blog-date">January 27, 12:10</p>
+              </div>
+              <a href="#read" class="afk-read-btn">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <section class="icf-airlines-section">
         <div class="partner-text">
           <h2>OUR SPONSERS</h2>
@@ -814,93 +857,93 @@
   <script src="knowledge.js"></script>
   <script src="elephant-bot.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => { 
-    const track = document.getElementById('icfCardsTrack');
-    const prevBtn = document.getElementById('icfPrevBtn');
-    const nextBtn = document.getElementById('icfNextBtn');
-    const sliderWrapper = document.querySelector('.icf-slider-wrapper');
-    
-    if (!track || !prevBtn || !nextBtn) return;
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.getElementById('icfCardsTrack');
+      const prevBtn = document.getElementById('icfPrevBtn');
+      const nextBtn = document.getElementById('icfNextBtn');
+      const sliderWrapper = document.querySelector('.icf-slider-wrapper');
 
-    let currentIndex = 0;
-    let autoPlayTimer = null;
-    const autoPlayInterval = 3000; // Time in milliseconds (3000ms = 3 seconds)
+      if (!track || !prevBtn || !nextBtn) return;
 
-    function getCardsPerView() {
+      let currentIndex = 0;
+      let autoPlayTimer = null;
+      const autoPlayInterval = 3000; // Time in milliseconds (3000ms = 3 seconds)
+
+      function getCardsPerView() {
         if (window.innerWidth <= 480) return 1;
         if (window.innerWidth <= 768) return 2;
         return 3;
-    }
+      }
 
-    function updateSlider() {
+      function updateSlider() {
         const cardWidth = track.querySelector('.icf-destination-card').offsetWidth;
         const gap = 14;
         const maxIndex = Math.max(0, track.children.length - getCardsPerView());
-        
+
         if (currentIndex > maxIndex) {
-            currentIndex = maxIndex;
+          currentIndex = maxIndex;
         }
 
         const moveAmount = currentIndex * (cardWidth + gap);
         track.style.transform = `translateX(-${moveAmount}px)`;
-    }
+      }
 
-    function moveToNextSlide() {
+      function moveToNextSlide() {
         const maxIndex = track.children.length - getCardsPerView();
         if (currentIndex < maxIndex) {
-            currentIndex++;
+          currentIndex++;
         } else {
-            currentIndex = 0; // Loop back to the beginning
+          currentIndex = 0; // Loop back to the beginning
         }
         updateSlider();
-    }
+      }
 
-    function moveToPrevSlide() {
+      function moveToPrevSlide() {
         if (currentIndex > 0) {
-            currentIndex--;
+          currentIndex--;
         } else {
-            currentIndex = Math.max(0, track.children.length - getCardsPerView());
+          currentIndex = Math.max(0, track.children.length - getCardsPerView());
         }
         updateSlider();
-    }
+      }
 
-    // Start auto sliding
-    function startAutoPlay() {
+      // Start auto sliding
+      function startAutoPlay() {
         autoPlayTimer = setInterval(moveToNextSlide, autoPlayInterval);
-    }
+      }
 
-    // Stop auto sliding (when user hovers mouse over it)
-    function stopAutoPlay() {
+      // Stop auto sliding (when user hovers mouse over it)
+      function stopAutoPlay() {
         clearInterval(autoPlayTimer);
-    }
+      }
 
-    // Event Listeners for Buttons
-    nextBtn.addEventListener('click', () => {
+      // Event Listeners for Buttons
+      nextBtn.addEventListener('click', () => {
         moveToNextSlide();
         stopAutoPlay();
         startAutoPlay(); // Reset timer on manual click
-    });
+      });
 
-    prevBtn.addEventListener('click', () => {
+      prevBtn.addEventListener('click', () => {
         moveToPrevSlide();
         stopAutoPlay();
         startAutoPlay(); // Reset timer on manual click
-    });
+      });
 
-    // Pause auto-play on mouse hover
-    if (sliderWrapper) {
+      // Pause auto-play on mouse hover
+      if (sliderWrapper) {
         sliderWrapper.addEventListener('mouseenter', stopAutoPlay);
         sliderWrapper.addEventListener('mouseleave', startAutoPlay);
-    }
+      }
 
-    // Handle Window Resize Responsiveness
-    window.addEventListener('resize', () => {
+      // Handle Window Resize Responsiveness
+      window.addEventListener('resize', () => {
         updateSlider();
-    });
+      });
 
-    // Initialize Auto-play
-    startAutoPlay();
-});
+      // Initialize Auto-play
+      startAutoPlay();
+    });
   </script>
 </body>
 
