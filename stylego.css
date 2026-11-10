@@ -163,7 +163,7 @@ button {
   display: none;
 }
 
-/* Slide-out Drawer Base */
+/* Slide-out Drawer Base (Light Mode Default) */
 .nav-drawer {
   position: fixed;
   top: 0;
@@ -171,38 +171,42 @@ button {
   width: 280px;
   height: 100vh;
   height: 100dvh;
-  background-color: #0d2319; /* Deep dark green theme matching your app */
-  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.6);
-  transition: right 0.3s ease-in-out;
+  background-color: #ffffff; /* White background for Light Mode */
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
+  transition: right 0.3s ease-in-out, background-color 0.3s;
   z-index: 2000;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
 }
 
-/* Open state class added via JavaScript */
+/* Open state */
 .nav-drawer.open {
   right: 0;
 }
 
-/* Drawer Header with Logo & Close Button */
+/* Drawer Header */
 .drawer-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.drawer-header .logo-text h2 {
+  color: #000000 !important; /* Dark text in Light Mode */
 }
 
 .close-btn {
   background: none;
   border: none;
-  color: #ffffff;
+  color: #000000;
   font-size: 22px;
   cursor: pointer;
 }
 
-/* Drawer Navigation Links */
+/* Drawer Content Links */
 .drawer-content {
   padding: 16px 20px;
   display: flex;
@@ -212,43 +216,60 @@ button {
 .drawer-section-title {
   font-size: 11px;
   letter-spacing: 1.5px;
-  color: #d4af37; /* Gold accent */
+  color: #12b866; /* Green accent */
   margin-top: 15px;
   margin-bottom: 8px;
   font-weight: 700;
 }
 
 .drawer-link {
-  color: #ffffff;
+  color: #000000; /* Dark text in Light Mode */
   text-decoration: none;
   font-size: 15px;
+  font-weight: 600;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: color 0.2s;
 }
 
 .drawer-link:hover, 
 .drawer-link.active {
-  color: #3ddc97;
+  color: #f44336;
 }
 
-/* Background Dark Overlay */
-.drawer-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s;
-  z-index: 1500;
+
+/* ========================================== */
+/* DARK MODE OVERRIDES FOR NAVIGATION DRAWER  */
+/* ========================================== */
+.app.dark-mode .nav-drawer {
+  background-color: #121c17 !important; /* Dark background matching your app */
+  border-left: 1px solid #2a3d33;
 }
 
-.drawer-overlay.open {
-  visibility: visible;
-  opacity: 1;
+.app.dark-mode .nav-drawer .drawer-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.app.dark-mode .nav-drawer .drawer-header .logo-text h2 {
+  color: #ffffff !important; /* White text in Dark Mode */
+}
+
+.app.dark-mode .nav-drawer .close-btn {
+  color: #ffffff !important;
+}
+
+.app.dark-mode .nav-drawer .drawer-section-title {
+  color: #3ddc97 !important; /* Accent green in Dark Mode */
+}
+
+.app.dark-mode .nav-drawer .drawer-link {
+  color: #e2f1ea !important; /* Light text for links in Dark Mode */
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.app.dark-mode .nav-drawer .drawer-link:hover, 
+.app.dark-mode .nav-drawer .drawer-link.active {
+  color: #3ddc97 !important;
 }
 
 /* Top System Utility Header */
