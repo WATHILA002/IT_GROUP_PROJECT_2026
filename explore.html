@@ -11,21 +11,62 @@
 
 <body>
   <div class="app">
-<div class="sys-utility-bar">
-  <div class="sys-alert"><i class="fa-solid fa-compass"></i>Destinations Explorer</div>
-  <div class="sys-utility-controls">
-    <label class="sys-select">
-      <i class="fa-solid fa-globe"></i>
-      <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language">
-        <option value="en">EN</option>
-        <option value="si">සිං</option>
-        <option value="ta">த</option>
-      </select>
-    </label>
-        <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()">LKR</button>
-        <button class="sys-btn" onclick="toggleDarkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+    <div class="sys-utility-bar">
+      <div class="sys-alert"><i class="fa-solid fa-compass"></i>Destinations</div>
+      <div class="sys-utility-controls">
+        <label class="sys-select">
+          <i class="fa-solid fa-globe"></i>
+          <select id="langSelect" onchange="setLanguage(this.value)" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="si">සිං</option>
+            <option value="ta">த</option>
+          </select>
+        </label>
+        <button class="sys-btn sys-curr-btn" onclick="toggleCurrency()" aria-label="Currency">LKR</button>
+        <button class="sys-btn sys-theme-btn" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-sun"></i><i class="fa-solid fa-moon"></i>
+          <button class="sys-btn sys-theme-btn" onclick="toggleMenu()" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </button>
+
+        <!-- Slide-out Drawer Navigation Menu -->
+        <div id="navDrawer" class="nav-drawer">
+          <div class="drawer-header">
+            <div class="footer-logo" style="margin-bottom:0;">
+              <i class="fa-solid fa-umbrella-beach logo-icon-gold" style="font-size:24px;"></i>
+              <div class="logo-text">
+                <h2 class="color123">LANKA STAY</h2>
+              </div>
+            </div>
+            <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu"><i
+                class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div class="drawer-content">
+            <span class="drawer-section-title">EXPLORE</span>
+            <a href="index.html" class="drawer-link active">Home</a>
+            <a href="hotel.html" class="drawer-link">Hotel Packages</a>
+            <a href="explore.html" class="drawer-link">Explore</a>
+            <a href="planner.html" class="drawer-link">Trip Planner</a>
+            <a href="explore.html" class="drawer-link">Destinations</a>
+            <a href="planner.html" class="drawer-link">Day Tours</a>
+            <a href="profile.html" class="drawer-link">Profile</a>
+
+            <span class="drawer-section-title">MORE</span>
+            <a href="index.html" class="drawer-link">Why Us</a>
+            <a href="index.html" class="drawer-link">Blog</a>
+            <a href="index.html" class="drawer-link">Testimonials</a>
+            <a href="saved.html" class="drawer-link">Saved</a>
+          </div>
+        </div>
+
+        <!-- Background Dark Overlay -->
+        <div id="drawerOverlay" class="drawer-overlay" onclick="toggleMenu()"></div>
       </div>
     </div>
+
+
 
     <main class="screen">
       <header class="page-header">
@@ -45,8 +86,9 @@
 
       <!-- Destinations List Container -->
       <section class="list" id="exploreList"></section>
-            <!-- Mobile App Comprehensive Footer -->
-       <footer class="app-footer">
+
+      <!-- Mobile App Comprehensive Footer -->
+      <footer class="app-footer">
 
         <div class="fotter-brand-section">
           <div class="footer-logo">
@@ -57,12 +99,17 @@
             </div>
           </div>
           <p class="footer-about-text">
-            <strong>LANKA Stay</strong><span data-i18n="fd1"> - operated by LankaGo (Pvt) Ltd and incorporated under companies Act No. 7 0f 2026 (company Registration no. PV00345889) - is your trusted Sri Lanka travel partner, dedicated to craftingtailor-made journeys, authenticexperiences, culturalimmersion, and exceptional comfort.
-          </span></p>
+            <strong>LANKA Stay</strong><span data-i18n="fd1"> - operated by LankaGo (Pvt) Ltd and incorporated under
+              companies Act No. 7 0f 2026 (company Registration no. PV00345889) - is your trusted Sri Lanka travel
+              partner, dedicated to craftingtailor-made journeys, authenticexperiences, culturalimmersion, and
+              exceptional comfort.
+            </span>
+          </p>
 
           <p class="footer-about-text"><span data-i18n="fd2">
-            We bring your travel dreams to life through expertly curated itineraries, genuine local insights, and personalized service every step of the way - <em>Because your journey our care.</em>
-          </span></p>
+              We bring your travel dreams to life through expertly curated itineraries, genuine local insights, and
+              personalized service every step of the way - <em>Because your journey our care.</em>
+            </span></p>
 
           <div class="footer-social-icons">
             <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -192,28 +239,22 @@
           </div>
         </div>
 
-       </footer>
+      </footer>
     </main>
 
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-      <a href="index.html"><i class="fa-solid fa-house"></i><span data-i18n="home">Home</span></a>
-      <a href="explore.html" class="active"><i class="fa-solid fa-compass"></i><span data-i18n="explore">Explore</span></a>
-      <a href="hotel.html"><i class="fa-solid fa-hotel"></i><span data-i18n="hotels">Hotels</span></a>
-      <a href="planner.html"><i class="fa-solid fa-route"></i><span data-i18n="planner">Planner</span></a>
-      <a href="profile.html"><i class="fa-regular fa-user"></i><span data-i18n="profile">Profile</span></a>
-    </nav>
   </div>
 
   <script src="translations.js"></script>
   <script src="app.js"></script>
+  <script src="elephant-bot.js"></script>
+
   <script>
     const destinationsData = [
-      { name: "Sigiriya", category: "cultural", rating: "4.8", desc: "Ancient rock fortress & royal history", img: ".//images/ssg.jpg", link: "places detail.html" },
-      { name: "Mirissa", category: "beaches", rating: "4.6", desc: "Whale watching & palm beaches", img: ".//images/miris.jpg", link: "#" },
-      { name: "Galle Fort", category: "cultural", rating: "4.5", desc: "Colonial charm & ocean views", img: ".//images/glft.webp", link: "#" },
-      { name: "Ella Nine Arch", category: "mountains", rating: "4.7", desc: "Hike, scenic train & tea hills", img: ".//images/ellao.avif", link: "#" },
-      { name: "Yala National Park", category: "nature", rating: "4.9", desc: "Leopard safaris & wilderness", img: ".//images/yalao.jpg", link: "#" }
+      {name: "Sigiriya", category: "cultural", rating: "4.8", desc: "Ancient rock fortress & royal history", img: ".//images/ssg.jpg", link: "places detail.html"},
+      {name: "Mirissa", category: "beaches", rating: "4.6", desc: "Whale watching & palm beaches", img: ".//images/miris.jpg", link: "#"},
+      {name: "Galle Fort", category: "cultural", rating: "4.5", desc: "Colonial charm & ocean views", img: ".//images/glft.webp", link: "#"},
+      {name: "Ella Nine Arch", category: "mountains", rating: "4.7", desc: "Hike, scenic train & tea hills", img: ".//images/ellao.avif", link: "#"},
+      {name: "Yala National Park", category: "nature", rating: "4.9", desc: "Leopard safaris & wilderness", img: ".//images/yalao.jpg", link: "#"}
     ];
 
     let currentExploreCategory = 'all';
@@ -267,6 +308,8 @@
     document.addEventListener('DOMContentLoaded', () => {
       renderDestinations();
     });
+
+
   </script>
 </body>
 
