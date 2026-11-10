@@ -104,62 +104,68 @@
         <br>
 
 
-        <div class="button-container">
-          <button class="plan-btn" onclick="location.href='planner.html'">
-            <i class="fa-solid fa-map-location-dot"></i>
-            <span data-i18n="plan_trip_btn">Plan Your Trip (Trip Fit Score)</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-        <br>
+        <div class="icf-wrapper">
 
-        <div class="section-title">
-          <h3 data-i18n="featured_hotels">Featured Season-Aware Hotels</h3>
-          <a href="hotel.html" data-i18n="view_all">View all →</a>
-        </div>
+          <!-- TOP DESTINATIONS CAROUSEL SLIDER -->
+          <section class="icf-destinations-section">
+            <h2 class="icf-section-title">Explore More</h2>
 
-        <div class="popular" style="display:flex; gap:12px; overflow-x:auto;">
-          <a href="hotel.html" class="mini-card"
-            style="flex:0 0 200px; height:140px; border-radius:14px; position:relative; overflow:hidden;">
-            <img src="./images/water-garden-sigiriya.jpg" alt="Water Garden"
-              style="width:100%; height:100%; object-fit:cover;">
-            <div class="caption"
-              style="position:absolute; bottom:0; padding:8px; background:linear-gradient(transparent, rgba(0,0,0,0.8)); color:white; width:100%;">
-              <b>Water Garden</b>
-              <small>Sigiriya • <span data-lkr="28000">LKR 28,000</span></small>
+            <div class="icf-slider-wrapper">
+              <!-- Previous Button -->
+              <button class="icf-slider-btn icf-prev-btn" id="icfPrevBtn" aria-label="Previous slide">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
+              <!-- Cards Track Container -->
+              <div class="icf-cards-viewport">
+                <div class="icf-cards-track" id="icfCardsTrack">
+
+                  <!-- Card 1 -->
+                  <div class="icf-destination-card">
+                    <img src="./images/ellao.avif" alt="Vietnam" class="icf-card-img">
+                    <div class="icf-card-overlay"></div>
+                    <h3 class="icf-card-title">Ella</h3>
+                  </div>
+
+                  <!-- Card 2 -->
+                  <div class="icf-destination-card">
+                    <img src="./images/yalao.jpg" alt="Malaysia" class="icf-card-img">
+                    <div class="icf-card-overlay"></div>
+                    <h3 class="icf-card-title">Yala</h3>
+                  </div>
+
+                  <!-- Card 3 -->
+                  <div class="icf-destination-card">
+                    <img src="./images/miris.jpg" alt="The Maldives" class="icf-card-img">
+                    <div class="icf-card-overlay"></div>
+                    <h3 class="icf-card-title">Mirissa</h3>
+                  </div>
+
+                  <!-- Card 4 -->
+                  <div class="icf-destination-card">
+                    <img src="./images/ssg.jpg" alt="Thailand" class="icf-card-img">
+                    <div class="icf-card-overlay"></div>
+                    <h3 class="icf-card-title">Sigiriya</h3>
+                  </div>
+
+                  <!-- Card 5 -->
+                  <div class="icf-destination-card">
+                    <img src="./images/glft.webp" alt="Singapore" class="icf-card-img">
+                    <div class="icf-card-overlay"></div>
+                    <h3 class="icf-card-title">Galle</h3>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Next Button -->
+              <button class="icf-slider-btn icf-next-btn" id="icfNextBtn" aria-label="Next slide">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
             </div>
-          </a>
-          <a href="hotel.html" class="mini-card"
-            style="flex:0 0 200px; height:140px; border-radius:14px; position:relative; overflow:hidden;">
-            <img src=".//images/avanib.webp" alt="Avani" style="width:100%; height:100%; object-fit:cover;">
-            <div class="caption"
-              style="position:absolute; bottom:0; padding:8px; background:linear-gradient(transparent, rgba(0,0,0,0.8)); color:white; width:100%;">
-              <b>Avani Bentota</b>
-              <small>Bentota • <span data-lkr="22000">LKR 22,000</span></small>
-            </div>
-          </a>
-          <a href="hotel.html" class="mini-card"
-            style="flex:0 0 200px; height:140px; border-radius:14px; position:relative; overflow:hidden;">
-            <img src="./images/wallawwa-kotugoda.jpg" alt="Water Garden"
-              style="width:100%; height:100%; object-fit:cover;">
-            <div class="caption"
-              style="position:absolute; bottom:0; padding:8px; background:linear-gradient(transparent, rgba(0,0,0,0.8)); color:white; width:100%;">
-              <b>Wallawwa Hotel</b>
-              <small>Kotugoda • <span data-lkr="28000">LKR 28,000</span></small>
-            </div>
-          </a>
-          <a href="hotel.html" class="mini-card"
-            style="flex:0 0 200px; height:140px; border-radius:14px; position:relative; overflow:hidden;">
-            <img src="./images/ugabaypasikuda.webp" alt="Uga bay" style="width:100%; height:100%; object-fit:cover;">
-            <div class="caption"
-              style="position:absolute; bottom:0; padding:8px; background:linear-gradient(transparent, rgba(0,0,0,0.8)); color:white; width:100%;">
-              <b>Uga bay hotel</b>
-              <small>Pasikuda • <span data-lkr="28000">LKR 28,000</span></small>
-            </div>
-          </a>
+          </section>
+
         </div>
-        <br>
-        <br>
 
         <br>
         <div class="weather-compact-card">
@@ -181,7 +187,7 @@
           <!-- Right Side: Future 2 Days & Button -->
           <div class="weather-col right">
             <div class="forecast-pills">
-              <span class="pill" id="pill-day-1">Tomorrow: <strong>--°C / --°C</strong></span>
+              <span class="pill" id="pill-day-1">Tommorow: <strong>--°C / --°C</strong></span>
               <span class="pill" id="pill-day-2">In 2 Days: <strong>--°C / --°C</strong></span>
             </div>
             <button class="show-more-mini-btn" id="showMoreBtn">Show More <i class="fa-solid fa-arrow-right"
@@ -199,7 +205,7 @@
 
             <div class="forecast-mini-list" id="modal-forecast-list" style="margin-top: 20px;">
               <div class="forecast-mini-item">
-                <span id="modal-day-1-name">Tomorrow</span>
+                <span id="modal-day-1-name">Tommorow</span>
                 <span id="modal-day-1-val">Loading...</span>
               </div>
               <div class="forecast-mini-item">
@@ -565,8 +571,82 @@
           </div>
         </div>
       </section>
-      <br>
-      <br>
+
+
+      <section class="icf-airlines-section">
+        <div class="partner-text">
+          <h2>OUR PARTNERS</h2>
+        </div>
+        <br>
+
+
+        <div class="icf-ticker-container">
+          <div class="icf-ticker-track" id="icfTickerTrack">
+            <!-- Airline Item 1 -->
+            <div class="icf-airline-item">
+              <span class="icf-airline-code">BA</span>
+              <div class="icf-airline-info">
+                <span class="icf-airline-name">British Airways</span>
+                <span class="icf-airline-hub">London (LHR)</span>
+              </div>
+            </div>
+            <!-- Airline Item 2 -->
+            <div class="icf-airline-item">
+              <span class="icf-airline-code">CX</span>
+              <div class="icf-airline-info">
+                <span class="icf-airline-name">Cathay Pacific</span>
+                <span class="icf-airline-hub">Hong Kong (HKG)</span>
+              </div>
+            </div>
+            <!-- Airline Item 3 -->
+            <div class="icf-airline-item">
+              <span class="icf-airline-code">MU</span>
+              <div class="icf-airline-info">
+                <span class="icf-airline-name">China Eastern</span>
+                <span class="icf-airline-hub">Shanghai (PVG)</span>
+              </div>
+            </div>
+            <!-- Airline Item 4 -->
+            <div class="icf-airline-item">
+              <span class="icf-airline-code">SQ</span>
+              <div class="icf-airline-info">
+                <span class="icf-airline-name">Singapore Airlines</span>
+                <span class="icf-airline-hub">Changi (SIN)</span>
+              </div>
+            </div>
+            <!-- Airline Item 5 -->
+            <div class="icf-airline-item">
+              <span class="icf-airline-code">EK</span>
+              <div class="icf-airline-info">
+                <span class="icf-airline-name">Emirates</span>
+                <span class="icf-airline-hub">Dubai (DXB)</span>
+              </div>
+            </div>
+            <!-- Duplicate items for smooth infinite loop -->
+            <div class="icf-airline-item">
+              <span class="icf-airline-code">BA</span>
+              <div class="icf-airline-info">
+                <span class="icf-airline-name">British Airways</span>
+                <span class="icf-airline-hub">London (LHR)</span>
+              </div>
+            </div>
+            <div class="icf-airline-item">
+              <span class="icf-airline-code">CX</span>
+              <div class="icf-airline-info">
+                <span class="icf-airline-name">Cathay Pacific</span>
+                <span class="icf-airline-hub">Hong Kong (HKG)</span>
+              </div>
+            </div>
+            <div class="icf-airline-item">
+              <span class="icf-airline-code">MU</span>
+              <div class="icf-airline-info">
+                <span class="icf-airline-name">China Eastern</span>
+                <span class="icf-airline-hub">Shanghai (PVG)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Mobile App Comprehensive Footer -->
       <footer class="app-footer">
@@ -730,6 +810,61 @@
   <script>window.EBOT = {container: "main", bottomOffset: 70};</script>
   <script src="knowledge.js"></script>
   <script src="elephant-bot.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.getElementById('icfCardsTrack');
+      const prevBtn = document.getElementById('icfPrevBtn');
+      const nextBtn = document.getElementById('icfNextBtn');
+
+      if (!track || !prevBtn || !nextBtn) return;
+
+      let currentIndex = 0;
+
+      function getCardsPerView() {
+        if (window.innerWidth <= 480) return 1;
+        if (window.innerWidth <= 768) return 2;
+        return 3;
+      }
+
+      function updateSlider() {
+        const cardWidth = track.querySelector('.icf-destination-card').offsetWidth;
+        const gap = 14;
+        const maxIndex = Math.max(0, track.children.length - getCardsPerView());
+
+        if (currentIndex > maxIndex) {
+          currentIndex = maxIndex;
+        }
+
+        const moveAmount = currentIndex * (cardWidth + gap);
+        track.style.transform = `translateX(-${moveAmount}px)`;
+      }
+
+      nextBtn.addEventListener('click', () => {
+        const maxIndex = track.children.length - getCardsPerView();
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          updateSlider();
+        } else {
+          currentIndex = 0;
+          updateSlider();
+        }
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlider();
+        } else {
+          currentIndex = Math.max(0, track.children.length - getCardsPerView());
+          updateSlider();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        updateSlider();
+      });
+    });
+  </script>
 </body>
 
 </html>
