@@ -3596,3 +3596,151 @@ body.dark-mode,
 .dark-mode .plan-hr {
   border-top-color: #1f3d30;
 }
+
+/* ===== FAQ Section Styles ===== */
+.faq-section {
+  padding: 32px 16px;
+  background-color: white; 
+  color: #23303a;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #c89b3c; /* Gold accent */
+  margin-bottom: 10px;
+}
+
+.faq-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: #c89b3c;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.faq-title {
+  font-family: 'Georgia', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a3c34;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.faq-desc {
+  font-size: 13.5px;
+  color: #556b63;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.faq-see-all {
+  display: inline-block;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #e8502e; /* Orange accent */
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: opacity 0.2s;
+}
+
+.faq-see-all:hover {
+  opacity: 0.8;
+}
+
+/* Accordion Styling */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #14211c;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-icon {
+  font-size: 13px;
+  color: #e8502e;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease;
+  font-size: 13px;
+  color: #556b63;
+  line-height: 1.55;
+}
+
+.faq-answer p {
+  padding-bottom: 16px;
+  margin: 0;
+}
+
+/* Active Open State */
+.faq-item.active .faq-icon {
+  transform: rotate(45deg); /* Turns the plus into an X */
+}
+
+.faq-item.active .faq-answer {
+  max-height: 150px; /* Expands smoothly */
+}
+
+
+/* ========================================== */
+/* DARK MODE OVERRIDES FOR FAQ SECTION        */
+/* ========================================== */
+.app.dark-mode .faq-section {
+  background-color: #121c17 !important;
+  color: #e2f1ea !important;
+}
+
+.app.dark-mode .faq-title {
+  color: #ffffff !important;
+}
+
+.app.dark-mode .faq-desc,
+.app.dark-mode .faq-answer {
+  color: #a8d5c2 !important;
+}
+
+.app.dark-mode .faq-question {
+  color: #f1f5f3 !important;
+}
+
+.app.dark-mode .faq-item {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.app.dark-mode .faq-see-all,
+.app.dark-mode .faq-icon {
+  color: #3ddc97 !important; /* Green/Mint accent in dark mode */
+}
