@@ -4843,7 +4843,7 @@ body.dark-mode,
 
 .icf-destination-card {
   position: relative;
-  min-width: 130px;
+  min-width: 60px;
   flex: 0 0 calc(33.333% - 10px);
   height: 220px;
   border-radius: 12px;
