@@ -702,30 +702,33 @@ button {
 }
 
 /* Weather Widget */
+/* Balanced Card Main Container */
 .weather-compact-card {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.12);
+  background: white;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   padding: 14px 18px;
   max-width: 620px;
   width: 100%;
   color: black;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  gap: 14px;
+  gap: 12px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Columns */
 .weather-col {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex: 1;
+  gap: 10px;
+  flex: 1.2;
+  min-width: 0; /* Prevents flex items from overflowing */
 }
 
 /* Right Side: Stack vertically so button and pills never overflow */
@@ -733,47 +736,52 @@ button {
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
 }
 
 /* Left Side Styling */
 .weather-mini-icon {
-  font-size: 2.4rem;
-  color: #f39c12;
+  font-size: 2.2rem;
+  color: #f6b93b;
   flex-shrink: 0;
 }
 
 .weather-compact-card h4 {
   margin: 0 0 2px 0;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  opacity: 0.85;
+  color: black;
   letter-spacing: 0.5px;
 }
 
 .temp-row {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 4px;
 }
 
 .weather-compact-card #current-temp {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: 700;
   line-height: 1;
+  color: black;
 }
 
 .weather-compact-card #weather-desc {
-  font-size: 0.8rem;
-  opacity: 0.85;
+  font-size: 0.75rem;
+  color: black;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Divider Line */
 .weather-divider {
   width: 1px;
-  height: 55px;
-  background: rgba(255, 255, 255, 0.25);
+  height: 50px;
+  background: rgba(255, 255, 255, 0.12);
   flex-shrink: 0;
 }
 
@@ -782,35 +790,60 @@ button {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
 }
 
 .pill {
-  font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 3px 8px;
+  font-size: 0.7rem;
+  background: white;
+  border: white;
+  color: black;
+  padding: 3px 6px;
   border-radius: 6px;
-  white-space: nowrap;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Show More Button - Fixed inside the card flow */
 .show-more-mini-btn {
-  background: #f44336;
+  background: #e74c3c;
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px 8px;
   border-radius: 8px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .show-more-mini-btn:hover {
-  background: #4e0904;
+  background: #c0392b;
+}
+
+/* Mobile Breakpoint: Stack everything vertically if screen is too narrow */
+@media screen and (max-width: 480px) {
+  .weather-compact-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+  }
+  
+  .weather-divider {
+    display: none; /* Hide vertical divider on mobile stack */
+  }
+
+  .weather-col {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 
 /* Modal Styles */
@@ -821,8 +854,9 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -831,13 +865,14 @@ button {
 .modal-content {
   background: white;
   color: black;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 18px 20px; /* Reduced padding */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 18px 20px;
   border-radius: 14px;
-  width: 360px; /* Made narrower (was 450px) */
+  width: 360px;
   max-width: 90%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: white;
   position: relative;
+  box-sizing: border-box;
 }
 
 .close-btn {
@@ -846,20 +881,23 @@ button {
   right: 15px;
   font-size: 1.2rem;
   cursor: pointer;
-  opacity: 0.8;
+  color: black;
 }
 
-.close-btn:hover { opacity: 1; }
+.close-btn:hover { 
+  color: grey; 
+}
 
 .modal-content h2 {
   margin-top: 0;
   font-size: 1.05rem;
   margin-bottom: 4px;
+  color: black;
 }
 
 .modal-content p {
   font-size: 0.8rem !important;
-  opacity: 0.8;
+  color: black !important;
   margin-bottom: 12px !important;
 }
 
@@ -873,7 +911,9 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.05);
+  background: white;
+  border: white;
+  color: black;
   padding: 6px 10px;
   border-radius: 6px;
   font-size: 0.78rem;
@@ -881,7 +921,8 @@ button {
 
 .chart-container {
   margin-top: 12px;
-  background: rgba(0, 0, 0, 0.2);
+  background: white;
+  border: white;
   padding: 10px;
   border-radius: 8px;
 }
@@ -889,17 +930,18 @@ button {
 .chart-title {
   font-size: 0.7rem;
   margin-bottom: 6px;
-  opacity: 0.8;
+  color: black;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .bar-graph {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
-  height: 75px; /* Reduced height from 100px */
+  height: 75px;
   padding-top: 5px;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .bar-col {
@@ -912,8 +954,8 @@ button {
 }
 
 .bar {
-  width: 18px; /* Thinner bars */
-  background: linear-gradient(to top, #f39c12, #f1c40f);
+  width: 18px;
+  background: linear-gradient(to top, #e67e22, #f1c40f);
   border-radius: 3px 3px 0 0;
   transition: height 0.5s ease;
 }
@@ -921,7 +963,19 @@ button {
 .bar-label {
   font-size: 0.65rem;
   margin-top: 4px;
-  opacity: 0.9;
+  color: black;
+}
+
+/* Responsive collapse */
+@media(max-width: 650px) {
+  .weather-compact-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .weather-divider {
+    width: 100%;
+    height: 1px;
+  }
 }
 
 /* AI / ML Banner */
