@@ -47,40 +47,6 @@ function updateCurrencyDisplays() {
   });
 }
 
-// Chatbot functionality
-function toggleChat() {
-  const modal = document.getElementById('chatModal');
-  if (modal) {
-    modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-  }
-}
-
-function sendChatMessage() {
-  const input = document.getElementById('chatInput');
-  const msgs = document.getElementById('chatMsgs');
-  if (!input || !input.value.trim()) return;
-
-  const txt = input.value.trim();
-  const userDiv = document.createElement('div');
-  userDiv.className = 'msg-user';
-  userDiv.textContent = txt;
-  msgs.appendChild(userDiv);
-  input.value = '';
-
-  setTimeout(() => {
-    const botDiv = document.createElement('div');
-    botDiv.className = 'msg-bot';
-    if (txt.toLowerCase().includes('weather') || txt.toLowerCase().includes('rain')) {
-      botDiv.textContent = "LankaStay AI: The South-West monsoon affects Galle & Bentota from May-Sept. Hill Country & Sigiriya remain sunny!";
-    } else if (txt.toLowerCase().includes('hello') || txt.toLowerCase().includes('hi') || txt.toLowerCase().includes('ayubowan')) {
-      botDiv.textContent = "Ayubowan! How can I assist your Sri Lanka travel plans today?";
-    } else {
-      botDiv.textContent = "LankaStay AI: Checked your query against seasonal routing & OSRM travel matrices. Recommendation updated!";
-    }
-    msgs.appendChild(botDiv);
-    msgs.scrollTop = msgs.scrollHeight;
-  }, 600);
-}
 
 // Live Weather Fetcher
 async function fetchWeather() {
