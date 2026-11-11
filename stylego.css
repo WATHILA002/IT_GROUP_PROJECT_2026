@@ -4936,9 +4936,9 @@ body.dark-mode,
 
 @media (max-width: 480px) {
   .icf-destination-card {
-    flex: 0 0 160%;
+    flex: 0 0 140%;
     height: 190px;
-    width: 160%;
+    width: 140%;
   }
 }
 
